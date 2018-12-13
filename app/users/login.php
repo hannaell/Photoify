@@ -13,8 +13,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
-    // die(var_dump($user));
-    // die(var_dump($user));
+
 
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -32,8 +31,9 @@ if (isset($_POST['email'], $_POST['password'])) {
                             ];
 
         redirect('/index.php');
-    } else {
-        echo "feeeeeel";
-        die(var_dump($pdo->errorInfo()));
+    }
+
+    else {
+        redirect('/login.php');
     }
 }
