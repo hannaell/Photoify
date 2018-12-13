@@ -6,20 +6,17 @@ require __DIR__.'/../autoload.php';
 
 // Kollar om allt är ifyllt
 if (isset($_POST['firstName'], $_POST['lastName'],$_POST['email'], $_POST['userName'], $_POST['password'], $_POST['confirmPassword'])) {
+    // Checks if passwords match
     if ($_POST['password'] === $_POST['confirmPassword']) {
-        // Checks if passwords match
         $firstName = trim(filter_var($_POST['firstName'], FILTER_SANITIZE_STRING));
         $lastName = trim(filter_var($_POST['lastName'], FILTER_SANITIZE_STRING));
         $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
         $userName = trim(filter_var($_POST['userName'], FILTER_SANITIZE_STRING));
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $created_at = ('Y-m-d');
+        $created_at = ("y-m-d");
 
-        $statement = $pdo->prepare('INSERT INTO users(first_name, last_name, user_name, email, password, created_at)
+        $statement = $pdo->prepare('INSERT INTO users(first_name, last_name, username, email, password, created_at)
         VALUES (:firstName, :lastName, :userName, :email, :password, :created_at)');
-
-        // $statement = $pdo->prepare('INSERT INTO users(first_name, last_name, email, user_name, password, created_at)
-        // VALUES (:firstName, :lastName, :email, :userName, :password, :created_at)');
 
         if (!$statement)
         {
@@ -35,5 +32,7 @@ if (isset($_POST['firstName'], $_POST['lastName'],$_POST['email'], $_POST['userN
         $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
 
         $statement->execute();
+
+        redirect('/login.php');
     }
 }
