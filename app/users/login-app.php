@@ -24,11 +24,16 @@ if (isset($_POST['email'], $_POST['password'])) {
     }
 
     if (password_verify($password, $user['password'])) {
-        $_SESSION['user'] = [
-                            'id' => $user['id'],
-                            'name' => $user['name'],
-                            'email' => $email['email']
-                            ];
+        $_SESSION['logedin'] = [
+            'id' => $user['id'],
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'email' => $email['email'],
+            'username' => $user['username'],
+            'profile_picture' => $user['profile_picture'],
+            'description' => $user['description'],
+            'created_at' => $user['created_at']
+        ];
 
         redirect('/index.php');
     }
