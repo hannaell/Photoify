@@ -28,7 +28,7 @@ if (isset($_POST['email'], $_POST['password'])) {
             'id' => $user['id'],
             'first_name' => $user['first_name'],
             'last_name' => $user['last_name'],
-            'email' => $email['email'],
+            'email' => $email,
             'username' => $user['username'],
             'profile_picture' => $user['profile_picture'],
             'description' => $user['description'],
