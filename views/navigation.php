@@ -20,7 +20,7 @@
 
       <li class="nav-item">
           <?php if (isset($_SESSION['logedin'])): ?>
-             <a class="nav-link" href="/app/users/settings-app.php">Settings</a>
+             <a class="nav-link" href="/settings.php">Settings</a>
              <?php else:  ?>
                  <a class="nav-link" href="/register.php">Register</a>
           <?php endif; ?>
