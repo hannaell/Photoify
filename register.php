@@ -3,23 +3,23 @@
 <article>
     <h1>Register</h1>
 
-    <form action="app/users/register.php" method="post">
+    <form action="app/users/register-app.php" method="post">
 
         <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input class="form-control" type="text" name="firstName" placeholder="First Name" required>
+            <label for="first_name">First Name</label>
+            <input class="form-control" type="text" name="first_name" placeholder="First Name" required>
             <small class="form-text text-muted">Please provide the your first name.</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input class="form-control" type="text" name="lastName" placeholder="Last Name" required>
+            <label for="last_name">Last Name</label>
+            <input class="form-control" type="text" name="last_name" placeholder="Last Name" required>
             <small class="form-text text-muted">Please provide the your last name.</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="userName">User Name</label>
-            <input class="form-control" type="text" name="userName" placeholder="User Name" required>
+            <label for="username">User Name</label>
+            <input class="form-control" type="text" name="username" placeholder="User Name" required>
             <small class="form-text text-muted">Please provide the your user name.</small>
         </div><!-- /form-group -->
 
@@ -37,7 +37,7 @@
 
         <div class="form-group">
             <label for="password">Confirm Password</label>
-            <input class="form-control" type="password" name="confirmPassword" required>
+            <input class="form-control" type="password" name="confirm_password" required>
             <small class="form-text text-muted">Please confirm password (passphrase).</small>
         </div><!-- /form-group -->
 
