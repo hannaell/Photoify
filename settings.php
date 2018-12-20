@@ -42,9 +42,21 @@
         </div><!-- /form-group -->
 
         <div class="form-group">
+            <label for="password">Confirm password</label>
+            <input class="form-control" type="password" name="password" required>
+            <small class="form-text text-muted">Please provide the your current password (passphrase).</small>
+        </div><!-- /form-group -->
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </form>
+
+    <form action="app/users/settings-app.php" method="post">
+
+        <div class="form-group">
             <label for="password">Change password</label>
             <input class="form-control" type="password" name="password" required>
             <small class="form-text text-muted">Please provide the your current password (passphrase).</small>
+            <input class="form-control" type="password" name="new_password" required>
+            <small class="form-text text-muted">Please provide the your new password (passphrase).</small>
             <input class="form-control" type="password" name="confirm_password" required>
             <small class="form-text text-muted">Please provide the your new password (passphrase).</small>
         </div><!-- /form-group -->

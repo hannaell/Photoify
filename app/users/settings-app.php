@@ -14,47 +14,107 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
     $updated_at = date("y-m-d, H:i:s");
     $id = (int)$_SESSION['logedin']['id'];
 
-    $statement = $pdo->prepare('UPDATE users SET first_name = :first_name, last_name = :last_name,
-        username = :username, description = :description, updated_at = :updated_at WHERE id = :id');
+    $user = getUserByID($id, $pdo);
 
-    if (!$statement)
-    {
-        die(var_dump($pdo->errorInfo()));
+    if(password_verify($_POST['password'], $user['password'])) {
+
+        $statement = $pdo->prepare('UPDATE users SET first_name = :first_name, last_name = :last_name,
+            username = :username, description = :description, updated_at = :updated_at WHERE id = :id');
+
+            if (!$statement)
+            {
+                die(var_dump($pdo->errorInfo()));
+            }
+
+            // binds variables to parameteres for insert statement
+            $statement->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $statement->bindParam(':username', $username, PDO::PARAM_STR);
+            $statement->bindParam(':description', $description, PDO::PARAM_STR);
+            $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+            $statement->execute();
+
+            $_SESSION['logedin'] = getUserByID($id, $pdo);
+
     }
-
-    // binds variables to parameteres for insert statement
-    $statement->bindParam(':first_name', $first_name, PDO::PARAM_STR);
-    $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
-    $statement->bindParam(':username', $username, PDO::PARAM_STR);
-    $statement->bindParam(':description', $description, PDO::PARAM_STR);
-    $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
-
-    $statement->execute();
-
 }
 
-// Code for updating email and password
-if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'], $_POST['confirm_password'])) {
+// Code for updating email
+if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'])) {
 
-    $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $confirm_password = password_hash($_POST['confirm_password'], PASSWORD_DEFAULT);
-    $updated_at = date("y-m-d, H:i:s");
     $id = (int)$_SESSION['logedin']['id'];
+    $user = getUserByID($id, $pdo);
+    $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
 
-    $statement = $pdo->prepare('UPDATE users SET email = :email, password = :password, updated_at = :updated_at WHERE id = :id');
+    if (password_verify($_POST['password'], $user['password'])) {
+        $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
 
-    if (!$statement)
-    {
-        die(var_dump($pdo->errorInfo()));
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $checkForEmail = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if ($checkForEmail) {
+            echo "Email alredy exicts";
+        }
+        else {
+            // die(var_dump('blah'));
+            $updated_at = date("y-m-d, H:i:s");
+            $id = (int)$_SESSION['logedin']['id'];
+
+            $statement = $pdo->prepare('UPDATE users SET email = :email WHERE id = :id');
+
+            if (!$statement)
+            {
+                die(var_dump($pdo->errorInfo()));
+            }
+
+            $statement->bindParam(':email', $email, PDO::PARAM_STR);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+            $statement->execute();
+
+            $_SESSION['logedin']['email'] = $email;
+        }
     }
+}
 
-    // binds variables to parameteres for insert statement
-    $statement->bindParam(':email', $email, PDO::PARAM_STR);
-    $statement->bindParam(':password', $confirm_password, PDO::PARAM_STR);
-    $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+// Code for updating password
+if (isset($_SESSION['logedin'], $_POST['password'], $_POST['new_password'], $_POST['confirm_password'])) {
 
-    $statement->execute();
+    if ($_POST['new_password'] === $_POST['confirm_password']) {
+
+        $id = (int)$_SESSION['logedin']['id'];
+        $user = getUserByID($id, $pdo);
+        $updated_at = date("y-m-d, H:i:s");
+        $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+
+        if (password_verify($_POST['password'], $user['password'])) {
+
+            $statement = $pdo->prepare('UPDATE users SET password = :password, updated_at = :updated_at WHERE id = :id');
+
+
+            if (!$statement)
+            {
+                die(var_dump($pdo->errorInfo()));
+            }
+
+            $statement->bindParam(':password', $new_password, PDO::PARAM_STR);
+            $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+            $statement->execute();
+
+            $_SESSION['logedin']['password'] = $new_password;
+
+        }
+    }
 }
