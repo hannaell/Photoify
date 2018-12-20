@@ -4,6 +4,47 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
+
+// Code for upload profile picture
+if (isset($_SESSION['logedin'], $_FILES['img'])) {
+    $profilePicture = $_FILES['img'];
+    $updated_at = date("y-m-d, H:i:s");
+    $id = (int)$_SESSION['logedin']['id'];
+    $imgName = $id.'_'.$updated_at.$profilePicture['name'];
+
+    $user = getUserByID($id, $pdo);
+
+    $statement = $pdo->prepare('UPDATE users SET profile_picture = :profile_picture, updated_at = :updated_at WHERE id = :id');
+
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        // binds variables to parameteres for insert statement
+        $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+        $statement->bindParam(':profile_picture', $imgName, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        if (!is_dir(__DIR__."/../images/")) {
+            mkdir(__DIR__."/../images/");
+        }
+
+        $path = __DIR__."/../images/";
+        $getImg = $profilePicture['tmp_name'];
+        $uploadImg = $path.$imgName;
+
+        move_uploaded_file($getImg, $uploadImg);
+
+        $_SESSION['logedin']['profile_picture'] = $imgName;
+
+        redirect('/settings.php');
+
+}
+
+
 // Code for updating first name, last name, username and bio
 if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POST['username'], $_POST['description'])) {
 

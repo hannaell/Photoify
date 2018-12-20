@@ -4,6 +4,20 @@
 
     <h1>Settings</h1>
 
+    <img src="/app/images/<?=$_SESSION['logedin']['profile_picture']?>" alt="BILD">
+
+    <form action="app/users/settings-app.php" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="profilePicture">Change profile picture</label>
+            <!-- <input  type="file" name="img" required> -->
+            <input type="file" name="img" required>
+            <small class="form-text text-muted">Please add a picture.</small>
+        </div><!-- /form-group -->
+
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </form>
+
     <form action="app/users/settings-app.php" method="post">
 
         <div class="form-group">
