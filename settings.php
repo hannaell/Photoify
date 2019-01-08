@@ -4,15 +4,14 @@
 
     <h1>Settings</h1>
 
-    <img src="/app/images/<?=$_SESSION['logedin']['profile_picture']?>" alt="BILD">
 
     <form action="app/users/settings-app.php" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
             <label for="profilePicture">Change profile picture</label>
+            <img src="/app/images/<?=$_SESSION['logedin']['profile_picture']?>" alt="BILD">
             <!-- <input  type="file" name="img" required> -->
             <input type="file" name="img" required>
-            <small class="form-text text-muted">Please add a picture.</small>
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -39,8 +38,8 @@
         </div><!-- /form-group -->
 
         <div class="form-group">
-            <label for="description">Update bio</label>
-            <input class="form-control" type="text" name="description" value="<?=$_SESSION['logedin']['description']?>" required>
+            <label for="biography">Update bio</label>
+            <input class="form-control" type="text" name="biography" value="<?=$_SESSION['logedin']['biography']?>" required>
             <small class="form-text text-muted">Write something about yourself.</small>
         </div><!-- /form-group -->
 

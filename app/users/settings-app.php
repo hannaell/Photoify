@@ -46,21 +46,21 @@ if (isset($_SESSION['logedin'], $_FILES['img'])) {
 
 
 // Code for updating first name, last name, username and bio
-if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POST['username'], $_POST['description'])) {
+if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POST['username'], $_POST['biography'])) {
 
     $first_name = trim(filter_var($_POST['first_name'], FILTER_SANITIZE_STRING));
     $last_name = trim(filter_var($_POST['last_name'], FILTER_SANITIZE_STRING));
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
-    $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
+    $biography = trim(filter_var($_POST['biography'], FILTER_SANITIZE_STRING));
     $updated_at = date("y-m-d, H:i:s");
     $id = (int)$_SESSION['logedin']['id'];
 
     $user = getUserByID($id, $pdo);
 
-    if(password_verify($_POST['password'], $user['password'])) {
+    // if(password_verify($_POST['password'], $user['password'])) {
 
         $statement = $pdo->prepare('UPDATE users SET first_name = :first_name, last_name = :last_name,
-            username = :username, description = :description, updated_at = :updated_at WHERE id = :id');
+            username = :username, biography = :biography, updated_at = :updated_at WHERE id = :id');
 
             if (!$statement)
             {
@@ -71,7 +71,7 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
             $statement->bindParam(':first_name', $first_name, PDO::PARAM_STR);
             $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
             $statement->bindParam(':username', $username, PDO::PARAM_STR);
-            $statement->bindParam(':description', $description, PDO::PARAM_STR);
+            $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
             $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
             $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
@@ -79,7 +79,8 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
 
             $_SESSION['logedin'] = getUserByID($id, $pdo);
 
-    }
+    // }
+    redirect('/settings.php');
 }
 
 // Code for updating email
@@ -126,6 +127,7 @@ if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'])) {
             $_SESSION['logedin']['email'] = $email;
         }
     }
+    redirect('/settings.php');
 }
 
 // Code for updating password
@@ -158,4 +160,5 @@ if (isset($_SESSION['logedin'], $_POST['password'], $_POST['new_password'], $_PO
 
         }
     }
+    redirect('/settings.php');
 }
