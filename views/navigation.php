@@ -7,7 +7,11 @@
       </li><!-- /nav-item -->
 
       <li class="nav-item">
-          <a class="nav-link" href="/about.php">About</a>
+          <a class="nav-link" href="/posts.php">Upload photo</a>
+      </li><!-- /nav-item -->
+
+      <li class="nav-item">
+          <a class="nav-link" href="/feed.php">News Feed</a>
       </li><!-- /nav-item -->
 
       <li class="nav-item">
