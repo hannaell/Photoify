@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+}
+body {
+  width: 100vw;
+}
+
+/* CSS for home page */
+
+.profilePictureHome {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+}
+
+/* CSS for news feed */
+
+.profilePictureFeed {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+  margin-left: 1vw;
+}
+
+.userFeed {
+  font-weight: bold;
+  margin-left: 1vw;
+}
+
+.photoFeed {
+  width: 100vw;
+  height: 100vw;
+}
+
+.descriptionFeed {
+  margin-left: 1vw;
+}
+
+.likesFeed {
+  margin-left: 1vw;
+}
+
+.commentUserFeed {
+  font-weight: bold;
+  color: deepskyblue;
+  margin-left: 1vw;
+}
+
+.commentFeed {
+  margin-left: 1vw;
+}
+
+.uploadedFeed {
+  margin-left: 1vw;
+}
+
+.formCommentFeed {
+  margin-left: 1vw;
+}
+
+.formCommentInputFeed {
+  border: blue solid 1px;
+  width: 96vw;
+  height: 5vh;
+}
+
+.button {
+  background-color: aqua;
+  height: 3vh;
+  margin-left: 1vw;
+}
+
+/* CSS for uploading a photo */
+
+.uploadPhoto {
+  width: 100vw;
+  height: 100vw;
+}
+
+.formDescriptionPosts {
+  margin-left: 1vw;
+}
+
+.formDescriptionInputPosts {
+  border: blue solid 1px;
+  width: 96vw;
+  height: 5vh;
+}
+
+.formFilePosts {
+}
+
+.formFileInputPosts {
+  background-color: aqua;
+  height: 3vh;
+  margin-left: 1vw;
+}
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 600px) {
+}
