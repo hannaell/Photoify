@@ -6,6 +6,7 @@
     <?php if (isset(($_SESSION['logedin']))): ?>
         <h2><?php echo 'Welcome, ' . $_SESSION['logedin']['first_name'] . ' ' . $_SESSION['logedin']['last_name'] .'!'; ?></h2>
         <img class="profilePictureHome" src="/app/images/<?=$_SESSION['logedin']['profile_picture']?>" alt="BILD">
+        <h4><?php echo $_SESSION['logedin']['biography']; ?></h4>
     <?php endif; ?>
 </article>
 

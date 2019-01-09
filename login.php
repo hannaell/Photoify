@@ -1,6 +1,8 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<article class="login">
+<!-- <article> -->
+<div class="login">
+
     <h1><?php echo $config['title']; ?></h1>
     <h1>Login</h1>
 
@@ -17,9 +19,13 @@
             <small class="">Please provide the your password (passphrase).</small>
         </div><!-- /form-group -->
 
-        <button class="button" type="submit">Login</button>
+        <div class="buttonLogin">
+            <button class="button" type="submit">Login</button>
+        </div>
 
     </form>
-</article>
+
+</div>
+<!-- </article> -->
 
 <?php require __DIR__.'/views/footer.php'; ?>

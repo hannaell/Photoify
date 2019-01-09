@@ -1,6 +1,6 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-<article>
+<!-- <article> -->
     <div class="register">
 
         <h1>Register</h1>
@@ -43,10 +43,12 @@
                 <small class="">Please confirm password (passphrase).</small>
             </div><!-- /form-group -->
 
-            <button class="button" type="submit">Register</button>
+            <div class="buttonRegister">
+                <button class="button" type="submit">Register</button>
+            </div>
         </form>
 
     </div>
-</article>
+<!-- </article> -->
 
 <?php require __DIR__.'/views/footer.php'; ?>
