@@ -43,7 +43,7 @@
                 <small class="">Please confirm password (passphrase).</small>
             </div><!-- /form-group -->
 
-            <button class="button" type="submit" class="btn btn-primary">Register</button>
+            <button class="button" type="submit">Register</button>
         </form>
 
     </div>

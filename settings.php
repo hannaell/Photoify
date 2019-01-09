@@ -14,7 +14,7 @@
             <input class="inputSettings" type="file" name="img" required>
         </div><!-- /form-group -->
 
-        <button class="button" type="submit" class="btn btn-primary">Save changes</button>
+        <button class="button" type="submit">Save changes</button>
     </form>
 
     <form action="app/users/settings-app.php" method="post">
@@ -43,7 +43,7 @@
             <small class="">Write something about yourself.</small>
         </div><!-- /form-group -->
 
-        <button class="button" type="submit" class="btn btn-primary">Save changes</button>
+        <button class="button" type="submit">Save changes</button>
     </form>
 
     <form action="app/users/settings-app.php" method="post">
@@ -59,7 +59,7 @@
             <input class="inputSettings" type="password" name="password" required>
             <small class="">Please provide the your current password (passphrase).</small>
         </div><!-- /form-group -->
-        <button class="button" type="submit" class="btn btn-primary">Save changes</button>
+        <button class="button" type="submit">Save changes</button>
     </form>
 
     <form action="app/users/settings-app.php" method="post">
@@ -74,7 +74,7 @@
             <small class="">Please provide the your new password (passphrase).</small>
         </div><!-- /form-group -->
 
-        <button class="button" type="submit" class="btn btn-primary">Save changes</button>
+        <button class="button" type="submit">Save changes</button>
     </form>
 
 </article>

@@ -15,7 +15,6 @@
             <div class="descriptionPosts">
                 <label for="description">Picture description</label>
                 <input class="inputPosts" type="text" name="description" placeholder="Describe your photo...">
-
             </div><!-- /form-group -->
 
             <button class="button" type="submit">Upload</button>
