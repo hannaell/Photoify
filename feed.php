@@ -23,6 +23,7 @@ $statement = $pdo->prepare(
 <?php foreach ($posts as $post): ?>
     <?php
     $postId = $post['post_id'];
+    $userId = $_SESSION['logedin']['id'];
 
     // Comments
     $statement = $pdo->prepare(
@@ -46,22 +47,42 @@ $statement = $pdo->prepare(
     $uploaded = date('d', $uploaded);
 
     // Likes
-    $statement = $pdo->prepare(
-        "SELECT l.post_id as post_id, p.id as id FROM likes l INNER JOIN posts p WHERE p.id = l.post_id
-        AND post_id = :post_id"
+    // $statement = $pdo->prepare(
+    //     "SELECT l.post_id as post_id, p.id as id FROM likes l INNER JOIN posts p WHERE p.id = l.post_id
+    //     AND post_id = :post_id"
+    // );
+    //
+    // if (!$statement)
+    // {
+    //     die(var_dump($pdo->errorInfo()));
+    // }
+    //
+    // $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    //
+    // $statement->execute();
+    // // Saving database in variable
+    // $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
+    // // die(var_dump($likes));
+    // //
+    // //
+
+    $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
+    // Determine if user already liked the posts
+    $statement = $pdo->query(
+        "SELECT * FROM likes WHERE user_id = '$userId' AND post_id ='$postId';"
     );
 
-    if (!$statement)
-    {
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
 
-    $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $liked = $statement->fetch(PDO::FETCH_ASSOC);
 
-    $statement->execute();
-    // Saving database in variable
-    $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
-    // die(var_dump($likes));
+    if ($liked) {
+        $action = 'disliked';
+    } else {
+        $action = 'liked';
+    }
 
     // Like counter
     $statement = $pdo->prepare(
@@ -88,8 +109,16 @@ $statement = $pdo->prepare(
     <p class="userFeed"><?php echo $post['username']; ?></p>
     <img class="photoFeed" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
     <p class="descriptionFeed"><?php echo $post['description']; ?></p>
+
+    <form method="post" class="likeFormFeed" >
+        <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
+        <input type="hidden" name="action" value="<?php echo $action; ?>" />
+        <button type="submit"><i class="fa fa-heart" aria-hidden="true"></i></button>
+    </form>
+
     <?php foreach ($countLikes as $countLike): ?>
-        <p class="likesFeed"><?php echo $countLike["COUNT(post_id)"] . ' likes'; ?></p>
+        <p class="likesFeed"><?php echo $countLike["COUNT(post_id)"]; ?></p>
+        <p>Likes</p>
     <?php endforeach; ?>
 
     <?php foreach ($comments as $comment): ?>
