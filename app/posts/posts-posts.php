@@ -11,6 +11,7 @@ if (isset($_SESSION['logedin'], $_FILES['img'])) {
     $created_at = date("y-m-d, H:i:s");
     $id = (int)$_SESSION['logedin']['id'];
     $imgName = $id.'_'.$created_at.$postPicture['name'];
+    $description = $_POST['description'];
 
 
     $user = getUserByID($id, $pdo);
