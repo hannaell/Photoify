@@ -86,6 +86,19 @@
                 <button class="button" type="submit">Save changes</button>
             </div>
         </form>
+
+        <form action="app/users/settings-app.php" method="post">
+
+            <div class="deleteSettings">
+                <label for="password">Delete account</label>
+                <input class="inputSettings" type="password" name="password" required>
+                <small class="">Please provide the your current password (passphrase).</small>
+            </div><!-- /form-group -->
+
+            <div class="buttonSettings">
+                <button class="button" type="submit">Delete account</button>
+            </div>
+        </form>
     </div>
 </article>
 
