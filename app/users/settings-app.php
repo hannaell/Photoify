@@ -57,7 +57,7 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
 
     $user = getUserByID($id, $pdo);
 
-    // if(password_verify($_POST['password'], $user['password'])) {
+
 
         $statement = $pdo->prepare('UPDATE users SET first_name = :first_name, last_name = :last_name,
             username = :username, biography = :biography, updated_at = :updated_at WHERE id = :id');
@@ -79,7 +79,7 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
 
             $_SESSION['logedin'] = getUserByID($id, $pdo);
 
-    // }
+
     redirect('/settings.php');
 }
 
