@@ -44,5 +44,5 @@ if (isset($_SESSION['logedin'], $_FILES['img'])) {
 
     $_SESSION['logedin']['content'] = $imgName;
 
-    redirect('/index.php');
+    redirect('/feed.php');
 }
