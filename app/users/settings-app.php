@@ -162,3 +162,97 @@ if (isset($_SESSION['logedin'], $_POST['password'], $_POST['new_password'], $_PO
     }
     redirect('/settings.php');
 }
+
+// Code for delete account
+if (isset($_SESSION['logedin'], $_POST['password'])) {
+    $id = (int)$_SESSION['logedin']['id'];
+    $user = getUserByID($id, $pdo);
+
+    if (password_verify($_POST['password'], $user['password'])) {
+
+        // Delete profile picture
+        if ($_SESSION['logedin']['profile_picture']) {
+            $path = __DIR__."/../images/";
+            unlink($path.$_SESSION['logedin']['profile_picture']);
+        }
+
+        // Delete post images
+        $statement = $pdo->prepare('SELECT content FROM posts WHERE user_id = :user_id');
+
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $path = __DIR__."/../images/";
+        foreach ($posts as $post) {
+            unlink($path.$post['content']);
+        }
+
+
+        // Delete account
+        $statement = $pdo->prepare('DELETE FROM users WHERE id = :user_id');
+
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        // Delete posts
+        $statement = $pdo->prepare('DELETE FROM posts WHERE user_id = :user_id');
+
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        // Delete comments
+        $statement = $pdo->prepare('DELETE FROM comments WHERE user_id = :user_id');
+
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        // Delete likes
+        $statement = $pdo->prepare('DELETE FROM likes WHERE user_id = :user_id');
+
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        // Delete follower
+        $statement = $pdo->prepare('DELETE FROM followers WHERE user_id = :user_id');
+
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+
+        $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+
+
+    }
+    session_destroy();
+    redirect('/login.php');
+}
