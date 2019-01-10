@@ -1,8 +1,16 @@
 * {
   margin: 0;
+  font-family: "Roboto", serif;
+  background-color: #fafafa;
 }
 body {
   width: 100vw;
+}
+
+/* Navbar */
+
+ul {
+  list-style: none;
 }
 
 /* CSS for home page */
@@ -15,16 +23,31 @@ body {
 
 /* CSS for news feed */
 
+.post {
+  margin-bottom: 2vh;
+  width: 100vw;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  border: lightgray solid 1px;
+  border-radius: 1%;
+}
+
 .profilePictureFeed {
-  width: 10vh;
-  height: 10vh;
+  width: 5vh;
+  height: 5vh;
   border-radius: 50%;
-  margin-left: 1vw;
+
+  margin: 2vw;
 }
 
 .userFeed {
   font-weight: bold;
-  margin-left: 1vw;
+}
+
+.uploadedPicture {
 }
 
 .photoFeed {
@@ -32,70 +55,329 @@ body {
   height: 100vw;
 }
 
-.descriptionFeed {
-  margin-left: 1vw;
+.likeButton {
+}
+
+.likeFormFeed {
+}
+
+.numberOfLikes {
+  display: flex;
+  margin: 1vw;
+}
+
+.likeCounterFeed {
 }
 
 .likesFeed {
-  margin-left: 1vw;
+  margin-left: 1vh;
+}
+
+.description {
+  display: flex;
+  margin: 1vw;
+}
+
+.descriptionFeed {
+  margin-left: 1vh;
+}
+
+.comments {
+  display: flex;
+  margin: 1vw;
 }
 
 .commentUserFeed {
   font-weight: bold;
   color: deepskyblue;
-  margin-left: 1vw;
 }
 
 .commentFeed {
-  margin-left: 1vw;
+  margin-left: 1vh;
+}
+
+.addComment {
+  display: flex;
+  margin: 1vw;
+}
+
+.formCommentFeed {
+}
+
+.inputFeed {
+  border: lightgray solid 1px;
+  width: 97vw;
+  height: 5vh;
+  margin-top: 1vw;
+}
+
+.button {
+  background-color: lightgray;
+  height: 3vh;
+  margin-top: 1vh;
+}
+
+.uploadedTime {
+  margin: 1vw;
 }
 
 .uploadedFeed {
   margin-left: 1vw;
 }
 
-.formCommentFeed {
-  margin-left: 1vw;
-}
-
-.formCommentInputFeed {
-  border: blue solid 1px;
-  width: 96vw;
-  height: 5vh;
-}
-
-.button {
-  background-color: aqua;
-  height: 3vh;
-  margin-left: 1vw;
-}
-
 /* CSS for uploading a photo */
+
+.uploadPosts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filePosts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .uploadPhoto {
   width: 100vw;
   height: 100vw;
 }
 
-.formDescriptionPosts {
-  margin-left: 1vw;
+.inputUpload {
+  border: lightgray solid 1px;
+  width: 96vw;
+  margin-top: 1vh;
 }
 
-.formDescriptionInputPosts {
-  border: blue solid 1px;
+.descriptionPosts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.inputPosts {
+  border: lightgray solid 1px;
   width: 96vw;
   height: 5vh;
 }
 
-.formFilePosts {
+.buttonPosts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.formFileInputPosts {
-  background-color: aqua;
-  height: 3vh;
-  margin-left: 1vw;
+/* CSS for login */
+
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.emailLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.passwordLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonLogin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputLogin {
+  border: lightgray solid 1px;
+}
+
+/* CSS for register */
+
+.register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstNameRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lastNameRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.usernameRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.emailRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.passwordRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmPasswordRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputRegister {
+  border: lightgray solid 1px;
+}
+
+.buttonRegister {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CSS for settings */
+
+.settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.labelSettings {
+  margin-bottom: 1vh;
+}
+
+.profilePictureSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pictureSettings {
+  width: 80vw;
+  height: 80vw;
+  border-radius: 50%;
+  margin: 1vh;
+}
+
+.firstNameSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.lastNameSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.usernameSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.bioSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.emailSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.confirmPasswordSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.changePasswordSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.deleteSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
+
+.inputSettings {
+  border: lightgray solid 1px;
+}
+
+.smallSettings {
+  margin: 1vh;
+}
+.buttonSettings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1vh;
+}
 /* Desktop */
 /* ============================================== */
 /* ============================================== */
