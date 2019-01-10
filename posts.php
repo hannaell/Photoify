@@ -3,14 +3,14 @@
 <?php if (isset($_SESSION['logedin'])): ?>
 
     <article>
-        <div class="posts">
+        <div class="uploadPosts">
             <h1>Upload photo</h1>
 
             <form action="app/posts/posts-posts.php" method="post" enctype="multipart/form-data">
 
                 <div class="filePosts">
                     <img class="uploadPhoto" src="/app/images/<?=$_SESSION['logedin']['content']?>" alt="BILD">
-                    <input class="inputPosts"type="file" name="img" required>
+                    <input class="inputUpload"type="file" name="img" required>
                 </div><!-- /form-group -->
                 <div class="descriptionPosts">
                     <label for="description">Picture description</label>
