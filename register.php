@@ -44,7 +44,7 @@
             </div><!-- /form-group -->
 
             <div class="buttonRegister">
-                <button class="button" type="submit">Register</button>
+                <button class="button" type="submit">Creare account</button>
             </div>
         </form>
 
