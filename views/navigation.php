@@ -14,13 +14,17 @@
 
       <li class="">
           <?php if (isset($_SESSION['logedin'])): ?>
-              <a class="" href="/posts.php">Upload photo</a>
+              <span class="uploadIcon">
+                  <a class="" href="/posts.php"><i class="fas fa-camera"></i></a>
+              </span>
           <?php endif; ?>
       </li><!-- /nav-item -->
 
       <li class="">
           <?php if (isset($_SESSION['logedin'])): ?>
-              <a class="" href="/feed.php">News Feed</a>
+              <span class="newsfeedIcon">
+                  <a class="" href="/feed.php"><i class="far fa-newspaper"></i></a>
+              </span>
           <?php endif; ?>
       </li><!-- /nav-item -->
 
