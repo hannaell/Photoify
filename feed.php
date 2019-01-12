@@ -108,62 +108,73 @@ $statement = $pdo->prepare(
         <!-- Skriver ut bilder och kommentarer -->
         <div class="post">
 
+            <div class="card">
 
-        <div class="account">
-            <img class="profilePictureFeed" src="/app/images/<?php echo $post['profile_picture']; ?>" alt="Profile Picture">
-            <p class="userFeed"><?php echo $post['username']; ?></p>
-        </div>
-
-        <div class="uploadedPicture">
-            <?php if ($post['user_id'] === $_SESSION['logedin']['id']): ?>
-                <a href="/editposts.php?post_id=<?= $postId?>">
-                    <img class="photoFeed" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
-                </a>
-            <?php else: ?>
-                <img class="photoFeed" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
-            <?php endif; ?>
-        </div>
-
-        <div class="likeButton">
-            <form method="post" class="likeFormFeed" >
-                <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
-                <input type="hidden" name="action" value="<?php echo $action; ?>" />
-                <button type="submit"><i class="fa fa-heart" aria-hidden="true"></i></button>
-            </form>
-        </div>
-
-        <div class="numberOfLikes">
-            <?php foreach ($countLikes as $countLike): ?>
-                <p class="likeCounterFeed"><?php echo $countLike["COUNT(post_id)"]; ?></p>
-                <p class="likesFeed">Likes</p>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="description">
-            <p class="userFeed"><?php echo $post['username']; ?></p>
-            <p class="descriptionFeed"><?php echo $post['description']; ?></p>
-        </div>
-
-        <?php foreach ($comments as $comment): ?>
-            <div class="comments">
-                <p class="commentUserFeed"><?php echo $comment['username']; ?></p>
-                <p class="commentFeed"><?php echo $comment['content']; ?></p>
-            </div>
-        <?php endforeach; ?>
-
-        <div class="addComment">
-            <form action="app/posts/comments-posts.php?post_id=<?php echo $postId?>" method="post">
-                <div class="formCommentFeed">
-                    <label for="comment">Comment</label>
-                    <input class="inputFeed" type="text" name="comment" placeholder="Comment..." required>
+                <div class="account">
+                    <img class="profilePictureFeed" src="/app/images/<?php echo $post['profile_picture']; ?>" alt="Profile Picture">
+                    <p class="userFeed"><?php echo $post['username']; ?></p>
                 </div>
-                <button class="button" type="submit">Submit</button>
-            </form>
-        </div>
 
-        <div class="uploadedTime">
-            <p class="uploadedFeed"><?php echo $uploaded . ' day ago'; ?></p>
-        </div>
+                <div class="uploadedPicture">
+                    <?php if ($post['user_id'] === $_SESSION['logedin']['id']): ?>
+                        <a href="/editposts.php?post_id=<?= $postId?>">
+                            <img class="photoFeed" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
+                        </a>
+                    <?php else: ?>
+                        <img class="photoFeed" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
+                    <?php endif; ?>
+                </div>
+
+                 <div class="container">
+
+                    <div class="likeButton">
+                        <form method="post" class="likeFormFeed" >
+                            <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
+                            <input type="hidden" name="action" value="<?php echo $action; ?>" />
+                            <button type="submit"><i class="far fa-heart" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+
+                    <div class="numberOfLikes">
+                        <?php foreach ($countLikes as $countLike): ?>
+                            <p class="likeCounterFeed"><?php echo $countLike["COUNT(post_id)"]; ?></p>
+                            <p class="likesFeed">Likes</p>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <div class="description">
+                        <p class="userFeed"><?php echo $post['username']; ?></p>
+                        <p class="descriptionFeed"><?php echo $post['description']; ?></p>
+                    </div>
+
+                    <?php foreach ($comments as $comment): ?>
+                        <div class="comments">
+                            <p class="commentUserFeed"><?php echo $comment['username']; ?></p>
+                            <p class="commentFeed"><?php echo $comment['content']; ?></p>
+                        </div>
+                    <?php endforeach; ?>
+
+                    <div class="addComment">
+                        <form action="app/posts/comments-posts.php?post_id=<?php echo $postId?>" method="post">
+                            <div class="formCommentFeed">
+                                <span class="commentIcon">
+                                    <i class="far fa-comment"></i>
+                                </span>
+
+                                <!-- <label for="comment">Comment</label> -->
+                                <input class="inputFeed" type="text" name="comment" placeholder="Comment..." required>
+                            </div>
+                            <button class="button" type="submit">Submit</button>
+                        </form>
+                    </div>
+
+                    <div class="uploadedTime">
+                        <p class="uploadedFeed"><?php echo $uploaded . ' day ago'; ?></p>
+                    </div>
+
+                 </div>
+
+            </div>
 
         </div>
 
