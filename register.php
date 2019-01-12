@@ -3,7 +3,7 @@
 <!-- <article> -->
     <div class="register">
 
-        <h1>Create account</h1>
+        <h2>Create account</h2>
 
         <form action="app/users/register-app.php" method="post">
 
@@ -30,13 +30,11 @@
             <div class="passwordRegister">
                 <label for="password">Password</label>
                 <input class="inputRegister" type="password" name="password" required>
-                <small class="">Please provide the your password (passphrase).</small>
             </div><!-- /form-group -->
 
             <div class="confirmPasswordRegister">
                 <label for="password">Confirm Password</label>
                 <input class="inputRegister" type="password" name="confirm_password" required>
-                <small class="">Please confirm password (passphrase).</small>
             </div><!-- /form-group -->
 
             <div class="buttonRegister">
