@@ -3,6 +3,8 @@
 <article>
     <div class="settings">
 
+        <a class="" href="/app/users/logout-app.php">Log Out</a>
+
         <h1>Settings</h1>
 
 
