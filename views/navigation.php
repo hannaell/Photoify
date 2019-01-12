@@ -1,10 +1,14 @@
 <nav class="">
-  <a class="" href="#"><?php echo $config['title']; ?></a>
 
   <ul class="">
+      <li>
+          <a class="" href="#"><?php echo $config['title']; ?></a>
+      </li>
       <li class="">
           <?php if (isset($_SESSION['logedin'])): ?>
-              <a class="" href="/index.php">Home</a>
+              <span class="homeIcon">
+                  <a class="" href="/index.php"><i class="far fa-user"></i></a>
+              </span>
           <?php endif; ?>
       </li><!-- /nav-item -->
 
