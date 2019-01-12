@@ -34,7 +34,9 @@
 
       <li class="">
           <?php if (isset($_SESSION['logedin'])): ?>
-             <a class="" href="/settings.php">Settings</a>
+              <span class="settingsIcon">
+                  <a class="" href="/settings.php"><i class="fas fa-ellipsis-v"></i></a>
+              </span>
              <?php else:  ?>
                  <a class="" href="/register.php">Register</a>
           <?php endif; ?>
