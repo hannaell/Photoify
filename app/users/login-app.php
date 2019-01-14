@@ -38,7 +38,7 @@ if (isset($_POST['email'], $_POST['password'])) {
             'description' => $user['description']
         ];
 
-        redirect('/index.php');
+        redirect('/feed.php');
     }
 
     else {
