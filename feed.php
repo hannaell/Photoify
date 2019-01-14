@@ -71,24 +71,20 @@ $statement = $pdo->prepare(
         $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
         // Determine if user already liked the posts
         $statement = $pdo->query(
-            "SELECT * FROM likes WHERE user_id = '$userId' AND post_id ='$postId';"
+            "SELECT * FROM likes WHERE user_id = :user_id AND post_id = :post_id;"
         );
 
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
+        $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
 
         $liked = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if ($liked) {
-            $action = 'disliked';
-        } else {
-            $action = 'liked';
-        }
-
         // Like counter
         $statement = $pdo->prepare(
-            "SELECT COUNT(post_id) FROM likes WHERE post_id = :post_id"
+            "SELECT COUNT(*) as likes FROM likes WHERE post_id = :post_id"
         );
 
         if (!$statement)
@@ -106,13 +102,32 @@ $statement = $pdo->prepare(
         ?>
 
         <!-- Skriver ut bilder och kommentarer -->
-        <div class="post">
+        <div class="post" data-id="<?php echo $postId; ?>">
 
             <div class="card">
 
                 <div class="account">
                     <img class="profilePictureFeed" src="/app/images/<?php echo $post['profile_picture']; ?>" alt="Profile Picture">
                     <p class="userFeed"><?php echo $post['username']; ?></p>
+                    <?php if ($post['user_id'] === $_SESSION['logedin']['id']): ?>
+                            <div class="dropdown">
+                                <button class="dropbtn">
+                                    <span class="settingsIconFeed">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </span>
+                                </button>
+                                <div class="dropdown-content" id="myDropdown">
+                                    <a class="" href="/editposts.php?post_id=<?= $postId?>">Edit post</a>
+
+                                    <form action="/editposts.php?post_id=<?= $postId?>" method="post" enctype="multipart/form-data">
+                                        <div>
+                                            <button class="buttonPosts" type="submit" name="delete">Delete post</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="uploadedPicture">
@@ -130,14 +145,17 @@ $statement = $pdo->prepare(
                     <div class="likeButton">
                         <form method="post" class="likeFormFeed" >
                             <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
-                            <input type="hidden" name="action" value="<?php echo $action; ?>" />
-                            <button type="submit"><i class="far fa-heart" aria-hidden="true"></i></button>
+                            <button class="hart" type="submit">
+                                <span class="hartIconFeed">
+                                    <i class="far fa-heart" aria-hidden="true"></i>
+                                </span>
+                            </button>
                         </form>
                     </div>
 
                     <div class="numberOfLikes">
                         <?php foreach ($countLikes as $countLike): ?>
-                            <p class="likeCounterFeed"><?php echo $countLike["COUNT(post_id)"]; ?></p>
+                            <p class="likeCounterFeed"><?php echo $countLike["likes"]; ?></p>
                             <p class="likesFeed">Likes</p>
                         <?php endforeach; ?>
                     </div>

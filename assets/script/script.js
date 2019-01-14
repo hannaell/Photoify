@@ -1,29 +1,49 @@
 // Manage likes on posts
-const [...likeForms] = document.querySelectorAll(".likeFormFeed");
+const [...posts] = document.querySelectorAll(".post");
 
 // Code do not edit
 
-likeForms.forEach(likeForm => {
+posts.forEach(post => {
+  const id = post.dataset.id; // Get post ID
+  const likeForm = post.querySelector(".likeFormFeed");
+  const numberOfLikes = post.querySelector(".numberOfLikes");
+
   likeForm.addEventListener("submit", event => {
     event.preventDefault();
 
     const formData = new FormData(likeForm);
-
-    if (likeForm[1].value === "disliked") {
-      likeForm[1].value = "liked";
-    } else {
-      likeForm[1].value = "disliked";
-    }
 
     fetch("app/posts/likes-posts.php", {
       method: "POST",
       body: formData
     })
       .then(response => response.json())
-      .then(
-        json =>
-          (likeForm.nextElementSibling.nextSibling.previousSibling.textContent =
-            json.likes)
-      );
+      .then(json => {
+        console.log(json);
+
+        if (json.action === "liked") {
+          likeForm.querySelector("i").classList.remove("far");
+          likeForm.querySelector("i").classList.add("fas");
+
+          numberOfLikes.querySelector(".likeCounterFeed").innerText =
+            json.likeCount;
+        } else {
+          likeForm.querySelector("i").classList.remove("fas");
+          likeForm.querySelector("i").classList.add("far");
+
+          numberOfLikes.querySelector(".likeCounterFeed").innerText =
+            json.likeCount;
+        }
+      });
   });
 });
+
+if (document.querySelector("#myDropdown")) {
+  const editPost = document.querySelector("#myDropdown");
+  const dropbtn = document.querySelector(".dropbtn");
+
+  //Dropdown for edit post.
+  dropbtn.addEventListener("click", () => {
+    editPost.classList.toggle("show");
+  });
+}
