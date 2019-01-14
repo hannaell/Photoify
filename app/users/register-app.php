@@ -33,6 +33,6 @@ if (isset($_POST['first_name'], $_POST['last_name'],$_POST['email'], $_POST['use
 
         $statement->execute();
 
-        redirect('/login.php');
+        redirect('/feed.php');
     }
 }
