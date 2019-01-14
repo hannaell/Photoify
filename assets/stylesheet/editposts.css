@@ -1,0 +1,89 @@
+/* CSS for edit posts */
+
+@media screen and (max-width: 600px) {
+  .dropdown {
+    float: right;
+    overflow: hidden;
+  }
+
+  .dropdown .dropbtn {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: lightgray;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin-left: 50vw;
+    width: 25px;
+  }
+
+  .dropdown-content {
+    display: none;
+    flex-flow: column;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+  }
+
+  .dropdown-content a {
+    float: right;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .show {
+    display: flex;
+  }
+
+  .editposts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .descriptionEditposts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inputEditposts {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .buttonEditposts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttonDeleteposts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: none;
+    height: 5vh;
+    width: 27vw;
+    border: none;
+    border-radius: 5%;
+    font-size: 16px;
+  }
+}

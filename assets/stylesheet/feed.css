@@ -1,0 +1,135 @@
+/* CSS for news feed */
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100vw;
+  }
+
+  .container {
+    margin-left: 1vw;
+  }
+
+  .post {
+  }
+
+  .account {
+    display: flex;
+    align-items: center;
+  }
+
+  .profilePictureFeed {
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    margin: 2vw;
+  }
+
+  .userFeed {
+    font-weight: bold;
+  }
+
+  .settingsIcon {
+    font-size: 20px;
+    color: black;
+  }
+
+  .uploadedPicture {
+  }
+
+  .photoFeed {
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .likeButton {
+  }
+
+  .likeFormFeed {
+  }
+
+  .numberOfLikes {
+    display: flex;
+  }
+
+  .hart {
+    margin: 0;
+    background-color: none;
+    height: 5vh;
+    width: 10vw;
+    border: none;
+    border-radius: 5%;
+    font-size: 16px;
+  }
+
+  .redHart {
+    color: red;
+    font-size: 30px;
+  }
+  .hartIconFeed {
+    font-size: 30px;
+    color: lightgray;
+  }
+
+  .likeCounterFeed {
+  }
+
+  .likesFeed {
+  }
+
+  .description {
+    display: flex;
+  }
+
+  .descriptionFeed {
+    margin-left: 1vh;
+  }
+
+  .comments {
+    display: flex;
+  }
+
+  .commentIcon {
+    font-size: 30px;
+    color: lightgray;
+  }
+
+  .commentUserFeed {
+    font-weight: bold;
+    color: deepskyblue;
+  }
+
+  .commentFeed {
+  }
+
+  .addComment {
+    display: flex;
+    margin: 1vw;
+  }
+
+  .formCommentFeed {
+  }
+
+  .inputFeed {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .button {
+    background-color: lightgray;
+    height: 5vh;
+    width: 30vw;
+    margin-top: 1vh;
+    border-radius: 5%;
+    font-size: 16px;
+  }
+
+  .uploadedTime {
+    margin: 1vw;
+  }
+
+  .uploadedFeed {
+  }
+}

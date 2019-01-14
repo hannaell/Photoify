@@ -11,8 +11,15 @@ require __DIR__.'/../app/autoload.php';
     <title><?php echo $config['title']; ?></title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+
     <link rel="stylesheet" href="/assets/stylesheet/style.css">
+    <link rel="stylesheet" href="/assets/stylesheet/navbar.css">
+    <link rel="stylesheet" href="/assets/stylesheet/feed.css">
+    <link rel="stylesheet" href="/assets/stylesheet/editposts.css">
+    <link rel="stylesheet" href="/assets/stylesheet/register.css">
+    <link rel="stylesheet" href="/assets/stylesheet/login.css">
+    <link rel="stylesheet" href="/assets/stylesheet/settings.css">
+
 </head>
 <body>
-    <?php require __DIR__.'/navigation.php'; ?>
+    <?php require __DIR__.'/navbar.php'; ?>
