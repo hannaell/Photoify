@@ -8,39 +8,43 @@ require __DIR__.'/../autoload.php';
 // Code for upload profile picture
 if (isset($_SESSION['logedin'], $_FILES['img'])) {
     $profilePicture = $_FILES['img'];
-    $updated_at = date("y-m-d, H:i:s");
-    $id = (int)$_SESSION['logedin']['id'];
-    $imgName = $id.'_'.$updated_at.$profilePicture['name'];
 
-    $user = getUserByID($id, $pdo);
+    if($postPicture['type'] === 'image/jpeg' || $postPicture['type'] === 'image/jpg' || $postPicture['type'] === 'image/png') {
+        if ($postPicture['size'] < 3000000) {
+            $updated_at = date("y-m-d, H:i:s");
+            $id = (int)$_SESSION['logedin']['id'];
+            $imgName = $id.'_'.$updated_at.$profilePicture['name'];
 
-    $statement = $pdo->prepare('UPDATE users SET profile_picture = :profile_picture, updated_at = :updated_at WHERE id = :id');
+            $user = getUserByID($id, $pdo);
 
-        if (!$statement)
-        {
-            die(var_dump($pdo->errorInfo()));
-        }
+            $statement = $pdo->prepare('UPDATE users SET profile_picture = :profile_picture, updated_at = :updated_at WHERE id = :id');
 
-        // binds variables to parameteres for insert statement
-        $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-        $statement->bindParam(':profile_picture', $imgName, PDO::PARAM_STR);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+            if (!$statement)
+            {
+                die(var_dump($pdo->errorInfo()));
+            }
 
-        $statement->execute();
+            // binds variables to parameteres for insert statement
+            $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+            $statement->bindParam(':profile_picture', $imgName, PDO::PARAM_STR);
+            $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
-        if (!is_dir(__DIR__."/../images/")) {
-            mkdir(__DIR__."/../images/");
-        }
+            $statement->execute();
 
-        $path = __DIR__."/../images/";
-        $getImg = $profilePicture['tmp_name'];
-        $uploadImg = $path.$imgName;
+            if (!is_dir(__DIR__."/../images/")) {
+                mkdir(__DIR__."/../images/");
+            }
 
-        move_uploaded_file($getImg, $uploadImg);
+            $path = __DIR__."/../images/";
+            $getImg = $profilePicture['tmp_name'];
+            $uploadImg = $path.$imgName;
 
-        $_SESSION['logedin']['profile_picture'] = $imgName;
+            move_uploaded_file($getImg, $uploadImg);
 
-        redirect('/settings.php');
+            $_SESSION['logedin']['profile_picture'] = $imgName;
+
+            }
+    }
 
 }
 
@@ -59,28 +63,25 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
 
 
 
-        $statement = $pdo->prepare('UPDATE users SET first_name = :first_name, last_name = :last_name,
-            username = :username, biography = :biography, updated_at = :updated_at WHERE id = :id');
+    $statement = $pdo->prepare('UPDATE users SET first_name = :first_name, last_name = :last_name,
+    username = :username, biography = :biography, updated_at = :updated_at WHERE id = :id');
 
-            if (!$statement)
-            {
-                die(var_dump($pdo->errorInfo()));
-            }
+    if (!$statement)
+    {
+        die(var_dump($pdo->errorInfo()));
+    }
 
-            // binds variables to parameteres for insert statement
-            $statement->bindParam(':first_name', $first_name, PDO::PARAM_STR);
-            $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
-            $statement->bindParam(':username', $username, PDO::PARAM_STR);
-            $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
-            $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
-            $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    // binds variables to parameteres for insert statement
+    $statement->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+    $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+    $statement->bindParam(':username', $username, PDO::PARAM_STR);
+    $statement->bindParam(':biography', $biography, PDO::PARAM_STR);
+    $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
-            $statement->execute();
+    $statement->execute();
 
-            $_SESSION['logedin'] = getUserByID($id, $pdo);
-
-
-    redirect('/settings.php');
+    $_SESSION['logedin'] = getUserByID($id, $pdo);
 }
 
 // Code for updating email
@@ -127,7 +128,6 @@ if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'])) {
             $_SESSION['logedin']['email'] = $email;
         }
     }
-    redirect('/settings.php');
 }
 
 // Code for updating password
@@ -160,7 +160,6 @@ if (isset($_SESSION['logedin'], $_POST['password'], $_POST['new_password'], $_PO
 
         }
     }
-    redirect('/settings.php');
 }
 
 // Code for delete account
@@ -256,3 +255,5 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
     session_destroy();
     redirect('/login.php');
 }
+
+redirect('/settings.php');
