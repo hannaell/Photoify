@@ -3,7 +3,7 @@
 <article>
     <div class="settings">
 
-        <a class="" href="/app/users/logout-app.php">Log Out</a>
+        <a class="" href="/app/users/logout-app.php">Sign out</a>
 
         <h1>Settings</h1>
 
@@ -12,8 +12,9 @@
 
             <div class="profilePictureSettings">
                 <label class="labelSettings" for="profilePicture">Change profile picture</label>
-                <img class="pictureSettings"src="/app/images/<?=$_SESSION['logedin']['profile_picture']?>" alt="BILD">
-                <input class="inputUpload" type="file" name="img" required>
+                <img class="uploadPhoto pictureSettings"src="/app/images/<?=$_SESSION['logedin']['profile_picture']?>" alt="BILD">
+                <input class="inputUpload" id="fileUpload" type="file" name="img" required>
+                <label class="fileUpload" for="fileUpload">Choose a file</label>
             </div><!-- /form-group -->
 
             <div class="buttonSettings">
@@ -99,5 +100,9 @@
         </form>
     </div>
 </article>
+
+<script type="text/javascript" src="assets/script/preview.js">
+
+</script>
 
 <?php require __DIR__.'/views/footer.php'; ?>
