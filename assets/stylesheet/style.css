@@ -30,57 +30,6 @@
     height: 20vh;
     border-radius: 50%;
   }
-
-  /* CSS for uploading a photo */
-
-  .uploadPosts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .filePosts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .uploadPhoto {
-    width: 100vw;
-    height: 100vw;
-  }
-
-  .inputUpload {
-    border: lightgray solid 1px;
-    width: 96vw;
-    margin-top: 1vh;
-  }
-
-  .descriptionPosts {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2vh;
-  }
-
-  .inputPosts {
-    width: 200px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: lightgray solid 1px;
-    font-size: 15px;
-  }
-
-  .buttonUploadpost {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
 }
 /* Desktop */
 /* ============================================== */

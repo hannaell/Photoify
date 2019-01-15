@@ -50,11 +50,26 @@
     align-items: center;
   }
 
+  .topEditpost {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .previousEditpost {
+    font-size: 40px;
+    margin-left: 3vw;
+    margin-right: 32vw;
+  }
+
   .descriptionEditposts {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 3vh;
   }
 
   .inputEditposts {

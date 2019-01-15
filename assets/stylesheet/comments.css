@@ -1,0 +1,43 @@
+/* CSS for edit comments */
+
+@media screen and (max-width: 600px) {
+  .comments {
+    display: flex;
+  }
+
+  .commentUserFeed {
+    font-weight: bold;
+    color: deepskyblue;
+    margin-right: 1vw;
+  }
+
+  .commentFeed {
+  }
+
+  .addComment {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttonComment {
+    background-color: lightgray;
+    height: 6vh;
+    width: 30vw;
+    border-radius: 5%;
+    font-size: 16px;
+  }
+
+  .inputFeed {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .formCommentFeed {
+  }
+}

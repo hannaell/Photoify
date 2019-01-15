@@ -19,10 +19,16 @@
   }
 
   .pictureSettings {
-    width: 80vw;
-    height: 80vw;
+    width: 60vw;
+    height: 60vw;
     border-radius: 50%;
     margin: 1vh;
+  }
+
+  .updateName {
+    width: 80vw;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
   }
 
   .firstNameSettings {
@@ -57,6 +63,12 @@
     margin: 1vh;
   }
 
+  .updateEmail {
+    width: 80vw;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+  }
+
   .emailSettings {
     display: flex;
     flex-direction: column;
@@ -71,6 +83,12 @@
     justify-content: center;
     align-items: center;
     margin: 1vh;
+  }
+
+  .updatePassword {
+    width: 80vw;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
   }
 
   .changePasswordSettings {

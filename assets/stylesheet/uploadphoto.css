@@ -1,0 +1,71 @@
+/* CSS for uploading a photo */
+@media screen and (max-width: 600px) {
+  .uploadPosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .h1uploadPhoto {
+    margin-top: 3vh;
+  }
+
+  .filePosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3vh;
+  }
+
+  .uploadPhoto {
+    width: 100vw;
+    height: 100vw;
+  }
+
+  .inputUpload {
+    /* border: lightgray solid 1px;
+    width: 96vw;
+    margin-top: 1vh; */
+    display: none;
+  }
+
+  .fileUpload {
+    background-color: lightgray;
+    height: 5vh;
+    width: 30vw;
+    margin-top: 1vh;
+    border-radius: 5%;
+    font-size: 16px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .descriptionPosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+  }
+
+  .inputPosts {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .buttonUploadpost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,10 +1,21 @@
-<?php require __DIR__.'/views/header.php';
+<?php
+
+declare(strict_types=1);
+
+require __DIR__.'/views/header.php';
 
 require __DIR__.'/app/posts/editposts-posts.php'
 
 ?>
+
+
 <div class="editposts">
-    <h2>Edit post</h2>
+    <div class="topEditpost">
+        <div class="previousEditpost">
+            <a href="/feed.php">&#8249;</a>
+        </div>
+        <h2>Edit post</h2>
+    </div>
 
     <img class="photoFeed" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
 
@@ -20,8 +31,6 @@ require __DIR__.'/app/posts/editposts-posts.php'
             <button class="button" type="submit">Save changes</button>
         </div>
     </form>
-
-
 
 </div>
 
