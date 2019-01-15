@@ -1,4 +1,8 @@
-<?php require __DIR__.'/views/header.php';
+<?php
+
+declare(strict_types=1);
+
+require __DIR__.'/views/header.php';
 
 // Posts
 $statement = $pdo->prepare(
@@ -26,6 +30,7 @@ $statement = $pdo->prepare(
         <?php
         $postId = $post['post_id'];
         $userId = $_SESSION['logedin']['id'];
+        $ago = getTime(time()-strtotime($post['created_at']));
 
         // Comments
         $statement = $pdo->prepare(
@@ -48,29 +53,10 @@ $statement = $pdo->prepare(
         $uploaded = time()-strtotime($post['created_at']);
         $uploaded = date('d', $uploaded);
 
-        // Likes
-        // $statement = $pdo->prepare(
-        //     "SELECT l.post_id as post_id, p.id as id FROM likes l INNER JOIN posts p WHERE p.id = l.post_id
-        //     AND post_id = :post_id"
-        // );
-        //
-        // if (!$statement)
-        // {
-        //     die(var_dump($pdo->errorInfo()));
-        // }
-        //
-        // $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
-        //
-        // $statement->execute();
-        // // Saving database in variable
-        // $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
-        // // die(var_dump($likes));
-        // //
-        // //
 
-        $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
+        // $likes = $statement->fetchAll(PDO::FETCH_ASSOC);
         // Determine if user already liked the posts
-        $statement = $pdo->query(
+        $statement = $pdo->prepare(
             "SELECT * FROM likes WHERE user_id = :user_id AND post_id = :post_id;"
         );
 
@@ -79,6 +65,8 @@ $statement = $pdo->prepare(
         }
         $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+
+        $statement->execute();
 
         $liked = $statement->fetch(PDO::FETCH_ASSOC);
 
@@ -108,7 +96,8 @@ $statement = $pdo->prepare(
 
                 <div class="account">
                     <img class="profilePictureFeed" src="/app/images/<?php echo $post['profile_picture']; ?>" alt="Profile Picture">
-                    <p class="userFeed"><?php echo $post['username']; ?></p>
+                    <a class="" href="/index.php?user_id=<?= $post['user_id']?>">
+                    <p class="userFeed"><?php echo $post['username']; ?></p></a>
                     <?php if ($post['user_id'] === $_SESSION['logedin']['id']): ?>
                             <div class="dropdown">
                                 <button class="dropbtn">
@@ -121,7 +110,7 @@ $statement = $pdo->prepare(
 
                                     <form action="/editposts.php?post_id=<?= $postId?>" method="post" enctype="multipart/form-data">
                                         <div>
-                                            <button class="buttonPosts" type="submit" name="delete">Delete post</button>
+                                            <button class="buttonDeleteposts" type="submit" name="delete">Delete post</button>
                                         </div>
                                     </form>
 
@@ -146,9 +135,15 @@ $statement = $pdo->prepare(
                         <form method="post" class="likeFormFeed" >
                             <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
                             <button class="hart" type="submit">
-                                <span class="hartIconFeed">
-                                    <i class="far fa-heart" aria-hidden="true"></i>
-                                </span>
+                                    <?php if($liked): ?>
+                                        <span class="redHart">
+                                            <i class="fas fa-heart" aria-hidden="true"></i>
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="hartIconFeed">
+                                            <i class="far fa-heart" aria-hidden="true"></i>
+                                        </span>
+                                    <?php endif; ?>
                             </button>
                         </form>
                     </div>
@@ -178,8 +173,6 @@ $statement = $pdo->prepare(
                                 <span class="commentIcon">
                                     <i class="far fa-comment"></i>
                                 </span>
-
-                                <!-- <label for="comment">Comment</label> -->
                                 <input class="inputFeed" type="text" name="comment" placeholder="Comment..." required>
                             </div>
                             <button class="button" type="submit">Submit</button>
@@ -187,7 +180,7 @@ $statement = $pdo->prepare(
                     </div>
 
                     <div class="uploadedTime">
-                        <p class="uploadedFeed"><?php echo $uploaded . ' day ago'; ?></p>
+                        <p class="uploadedFeed"><?php echo $ago; ?></p>
                     </div>
 
                  </div>
