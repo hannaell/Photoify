@@ -8,13 +8,14 @@ require __DIR__.'/views/header.php'; ?>
 
     <article>
         <div class="uploadPosts">
-            <h1>Upload photo</h1>
+            <h1 class="h1uploadPhoto">Upload photo</h1>
 
             <form action="app/posts/posts-posts.php" method="post" enctype="multipart/form-data">
 
                 <div class="filePosts">
-                    <img class="uploadPhoto" src="" alt="BILD">
-                    <input class="inputUpload" type="file" name="img" required>
+                    <img class="uploadPhoto" src="app/images/camera.png" alt="BILD">
+                    <input class="inputUpload" id="fileUpload" type="file" name="img" required>
+                    <label class="fileUpload" for="fileUpload">Choose a file</label>
                 </div><!-- /form-group -->
                 <div class="descriptionPosts">
                     <label for="description">Picture description</label>
@@ -27,6 +28,10 @@ require __DIR__.'/views/header.php'; ?>
             </form>
         </div>
     </article>
+
+    <script type="text/javascript" src="assets/script/preview.js">
+
+    </script>
 
 <?php else: redirect('/login.php');?>
 
