@@ -1,7 +1,7 @@
 <?php require __DIR__.'/views/header.php'; ?>
 
-
 <div class="login">
+
     <h2 class="h2Login">Login</h2>
     <div class="containerLogin">
         <form action="app/users/login-app.php" method="post">

@@ -3,14 +3,13 @@
 declare(strict_types=1);
 
 require __DIR__.'/views/header.php';
-require __DIR__.'/app/posts/comments-posts.php';
 
 ?>
 
 <?php if (isset($_SESSION['logedin'])): ?>
 
     <?php
-
+    $id = (int)$_SESSION['logedin']['id'];
     $postId = filter_var($_GET['post_id'], FILTER_SANITIZE_STRING);;
 
     $statement = $pdo->prepare(
@@ -21,6 +20,40 @@ require __DIR__.'/app/posts/comments-posts.php';
     $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    //Get post
+    $statement = $pdo->prepare(
+        'SELECT content, description, created_at, updated_at, user_id
+        FROM posts WHERE id = :id'
+    );
+    if(!$statement){
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':id', $postId, PDO::PARAM_STR);
+    $statement->execute();
+    $postImg = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if (isset($_POST['comment'], $_GET['post_id'])) {
+        $comment = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
+        $created_at = date("y-m-d, H:i:s");
+
+        $statement = $pdo->prepare(
+            'INSERT INTO comments (content, created_at, user_id, post_id)
+            VALUES (:content, :created_at, :id, :post_id)'
+        );
+        if (!$statement)
+        {
+            die(var_dump($pdo->errorInfo()));
+        }
+        $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+        $statement->bindParam(':content', $comment, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
+
+        $statement->execute();
+
+        redirect('/feed.php');
+    }
 
     // Comments
     $statement = $pdo->prepare(
@@ -42,10 +75,13 @@ require __DIR__.'/app/posts/comments-posts.php';
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
-    $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
     $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
     $statement->execute();
     $liked = $statement->fetch(PDO::FETCH_ASSOC);
+
+
+
 
     $countLikes = countLikes($postId, $pdo);
     $ago = getTime(time()-strtotime($user['created_at']));
@@ -53,79 +89,87 @@ require __DIR__.'/app/posts/comments-posts.php';
     ?>
 
     <!-- Skriver ut bilder och kommentarer -->
+
     <div class="post" data-id="<?php echo $postId; ?>">
 
-        <div class="card">
+        <div class="postComments">
 
-            <div class="account">
-                <img class="profilePictureFeed" src="/app/images/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
-                <a class="" href="/profileuser.php?user_id=<?= $posts['user_id']?>">
-                <p class="userFeed"><?php echo $user['username']; ?></p></a>
-            </div>
+            <div class="card">
 
-            <div class="uploadedPicture">
-                <img class="photoFeed" src="/app/images/<?php echo $postImg['content']; ?>" alt="Image">
-            </div>
-
-            <div class="container">
-
-                <div class="likeButton">
-                    <form method="post" class="likeFormFeed" >
-                        <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
-                        <button class="hart" type="submit">
-                            <?php if($liked): ?>
-                                <span class="redHart">
-                                    <i class="fas fa-heart" aria-hidden="true"></i>
-                                </span>
-                            <?php else: ?>
-                                <span class="hartIconFeed">
-                                    <i class="far fa-heart" aria-hidden="true"></i>
-                                </span>
-                            <?php endif; ?>
-                        </button>
-                    </form>
-                    <div class="">
-                        <span class="commentIcon">
-                            <i class="far fa-comment"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="numberOfLikes">
-                    <?php foreach ($countLikes as $countLike): ?>
-                        <p class="likeCounterFeed"><?php echo $countLike['likes']; ?></p>
-                        <p class="likesFeed">Likes</p>
-                    <?php endforeach; ?>
-                </div>
-
-                <div class="description">
-                    <a class="" href="/profileuser.php?user_id=<?= $user['user_id']?>">
+                <div class="account">
+                    <img class="profilePictureFeed" src="/app/images/<?php echo $user['profile_picture']; ?>" alt="Profile Picture">
+                    <a class="" href="/profileuser.php?user_id=<?= $posts['user_id']?>">
                     <p class="userFeed"><?php echo $user['username']; ?></p></a>
-                    <p class="descriptionFeed"><?php echo $postImg['description']; ?></p>
                 </div>
 
-                <?php foreach ($comments as $comment): ?>
-                    <div class="comments">
-                        <p class="commentUserFeed"><?php echo $comment['username']; ?></p>
-                        <p class="commentFeed"><?php echo $comment['content']; ?></p>
-                    </div>
-                <?php endforeach; ?>
+                <div class="uploadedPicture">
+                    <img class="photoFeed" src="/app/images/<?php echo $postImg['content']; ?>" alt="Image">
+                </div>
 
-                <!-- <div class="addComment"> -->
-                    <form class="addComment" action="app/posts/comments-posts.php?post_id=<?php echo $postId?>" method="post">
-                        <div class="formCommentFeed">
+                <div class="container">
 
-                            <input class="inputFeed" type="text" name="comment" placeholder="Comment..." required>
+                    <div class="likeButton">
+                        <form method="post" class="likeFormFeed" >
+                            <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
+                            <button class="hart" type="submit">
+                                <?php if($liked): ?>
+                                    <span class="redHart">
+                                        <i class="fas fa-heart" aria-hidden="true"></i>
+                                    </span>
+                                <?php else: ?>
+                                    <span class="hartIconFeed">
+                                        <i class="far fa-heart" aria-hidden="true"></i>
+                                    </span>
+                                <?php endif; ?>
+                            </button>
+                        </form>
+                        <div class="">
+                            <span class="commentIcon">
+                                <i class="far fa-comment"></i>
+                            </span>
                         </div>
-                        <button class="buttonComment" type="submit">Submit</button>
-                    </form>
-                <!-- </div> -->
+                    </div>
 
-                <div class="uploadedTime">
-                    <p class="uploadedFeed"><?php echo $ago; ?></p>
-                </div>
+                    <div class="likesComments">
+                        <?php foreach ($countLikes as $countLike): ?>
+                            <p class="likeCounterFeed"><?php echo $countLike['likes']; ?></p>
+                            <p class="likesFeed">Likes</p>
+                        <?php endforeach; ?>
+                    </div>
 
-             </div>
+                    <div class="description">
+                        <a class="" href="/profileuser.php?user_id=<?= $user['user_id']?>">
+                        <p class="userFeed"><?php echo $user['username']; ?></p></a>
+                        <p class="descriptionFeed"><?php echo $postImg['description']; ?></p>
+                    </div>
+
+                    <div class="commenstDiv">
+                        <?php foreach ($comments as $comment): ?>
+                            <div class="comments">
+                                <a class="" href="/profileuser.php?user_id=<?= $comment['user_id']?>">
+                                <p class="commentUserFeed"><?php echo $comment['username']; ?></p></a>
+                                <p class="commentFeed"><?php echo $comment['content']; ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <!-- <div class="addComment"> -->
+                        <form class="addComment" action="/comments.php?post_id=<?php echo $postId?>" method="post">
+                            <div class="formComment">
+
+                                <input class="inputComments" type="text" name="comment" placeholder="Comment..." required>
+                                <button class="buttonComment" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    <!-- </div> -->
+
+                    <div class="uploadedTime">
+                        <p class="uploadedFeed"><?php echo $ago; ?></p>
+                    </div>
+
+                 </div>
+
+            </div>
 
         </div>
 

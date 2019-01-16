@@ -5,10 +5,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 9vh;
+    padding-bottom: 7vh;
   }
 
   .labelSettings {
+    margin-top: 1vh;
     margin-bottom: 1vh;
+  }
+
+  .profileSettings {
+    width: 80vw;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .profilePictureSettings {
@@ -16,19 +30,18 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-
-  .pictureSettings {
-    width: 60vw;
-    height: 60vw;
-    border-radius: 50%;
-    margin: 1vh;
+    margin-top: 1vh;
   }
 
   .updateName {
     width: 80vw;
     border: 1px solid lightgrey;
     border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .firstNameSettings {
@@ -67,6 +80,11 @@
     width: 80vw;
     border: 1px solid lightgrey;
     border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .emailSettings {
@@ -89,6 +107,11 @@
     width: 80vw;
     border: 1px solid lightgrey;
     border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .changePasswordSettings {
@@ -97,6 +120,17 @@
     justify-content: center;
     align-items: center;
     margin: 1vh;
+  }
+
+  .deleteAccount {
+    width: 80vw;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .deleteSettings {
@@ -119,11 +153,19 @@
   .smallSettings {
     margin: 1vh;
   }
+
   .buttonSettings {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 3vh;
+  }
+
+  .pictureSettings {
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
     margin: 1vh;
   }
 }

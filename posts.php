@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 require __DIR__.'/views/header.php'; ?>
 
-<?php if (isset($_SESSION['logedin'])): ?>
+<?php if (isset($_SESSION['logedin']['id'])): ?>
 
-    <article>
         <div class="uploadPosts">
-            <h1 class="h1uploadPhoto">Upload photo</h1>
+
 
             <form action="app/posts/posts-posts.php" method="post" enctype="multipart/form-data">
 
@@ -27,11 +26,12 @@ require __DIR__.'/views/header.php'; ?>
                 </div>
             </form>
         </div>
-    </article>
+
 
     <script type="text/javascript" src="assets/script/preview.js">
 
     </script>
+
 
 <?php else: redirect('/login.php');?>
 

@@ -10,12 +10,9 @@ require __DIR__.'/app/posts/editposts-posts.php'
 
 
 <div class="editposts">
-    <div class="topEditpost">
-        <div class="previousEditpost">
-            <a href="/feed.php">&#8249;</a>
-        </div>
+
         <h2>Edit post</h2>
-    </div>
+
 
     <img class="photoFeed" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
 

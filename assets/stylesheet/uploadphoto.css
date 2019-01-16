@@ -5,6 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 9vh;
+    padding-bottom: 7vh;
   }
 
   .h1uploadPhoto {
@@ -16,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 3vh;
+    margin-top: 1vh;
   }
 
   .uploadPhoto {

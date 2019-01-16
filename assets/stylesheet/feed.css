@@ -2,8 +2,13 @@
 @media screen and (max-width: 600px) {
   .card {
     width: 100vw;
+    border-top: 1px solid lightgrey;
   }
 
+  .postsFeed {
+    padding-top: 9vh;
+    padding-bottom: 7vh;
+  }
   .container {
     margin-left: 1vw;
   }
@@ -37,7 +42,7 @@
 
   .photoFeed {
     width: 100vw;
-    height: 100vw;
+    height: auto;
   }
 
   .likeButton {
@@ -56,6 +61,16 @@
 
   .numberOfLikes {
     display: flex;
+    justify-content: space-between;
+  }
+
+  .numberLikes {
+    display: flex;
+  }
+
+  .numberComments {
+    display: flex;
+    margin-right: 1vw;
   }
 
   .hart {
@@ -103,7 +118,8 @@
   }
 
   .uploadedTime {
-    margin: 1vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
   }
 
   .uploadedFeed {

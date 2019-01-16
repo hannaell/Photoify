@@ -9,8 +9,8 @@ require __DIR__.'/../autoload.php';
 if (isset($_SESSION['logedin'], $_FILES['img'])) {
     $profilePicture = $_FILES['img'];
 
-    if($postPicture['type'] === 'image/jpeg' || $postPicture['type'] === 'image/jpg' || $postPicture['type'] === 'image/png') {
-        if ($postPicture['size'] < 3000000) {
+    if($profilePicture['type'] === 'image/jpeg' || $profilePicture['type'] === 'image/jpg' || $profilePicture['type'] === 'image/png') {
+        if ($profilePicture['size'] < 3000000) {
             $updated_at = date("y-m-d, H:i:s");
             $id = (int)$_SESSION['logedin']['id'];
             $imgName = $id.'_'.$updated_at.$profilePicture['name'];
@@ -256,4 +256,4 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
     redirect('/login.php');
 }
 
-redirect('/settings.php');
+redirect('/profilehome.php?user_id='.$id);

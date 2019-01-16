@@ -23,12 +23,8 @@
     margin-left: 3vw;
   }
 
-  /* CSS for home page */
-
-  .profilePictureHome {
-    width: 20vh;
-    height: 20vh;
-    border-radius: 50%;
+  h1 {
+    font-family: "Pacifico", cursive;
   }
 }
 /* Desktop */

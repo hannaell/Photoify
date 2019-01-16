@@ -14,9 +14,10 @@ if (isset($_POST['first_name'], $_POST['last_name'],$_POST['email'], $_POST['use
         $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $created_at = date("y-m-d, H:i:s");
+        $profilePicture = 'user.png';
 
-        $statement = $pdo->prepare('INSERT INTO users(first_name, last_name, username, email, password, created_at)
-        VALUES (:first_name, :last_name, :username, :email, :password, :created_at)');
+        $statement = $pdo->prepare('INSERT INTO users(first_name, last_name, username, email, password, created_at, profile_picture)
+        VALUES (:first_name, :last_name, :username, :email, :password, :created_at, :profile_picture)');
 
         if (!$statement)
         {
@@ -30,6 +31,7 @@ if (isset($_POST['first_name'], $_POST['last_name'],$_POST['email'], $_POST['use
         $statement->bindParam(':email', $email, PDO::PARAM_STR);
         $statement->bindParam(':password', $password, PDO::PARAM_STR);
         $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+        $statement->bindParam(':profile_picture', $profilePicture, PDO::PARAM_STR);
 
         $statement->execute();
 

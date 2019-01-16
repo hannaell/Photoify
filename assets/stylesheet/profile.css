@@ -1,0 +1,45 @@
+/* CSS for profile page */
+@media screen and (max-width: 600px) {
+  .profilepictureProfile {
+    width: 18vh;
+    height: 18vh;
+    border-radius: 50%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+
+  .userProfile {
+    width: 90vw;
+    height: 35vh;
+    margin: 5vw;
+    padding-top: 9vh;
+  }
+
+  .photoDiv {
+    width: 32vw;
+    height: 32vw;
+    overflow: hidden;
+    position: relative;
+  }
+  .photoProfile {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .landscape {
+    height: 100%;
+    width: auto;
+  }
+
+  .feeedProfile {
+    display: grid;
+    grid-template-columns: 32vw 32vw 32vw;
+    grid-template-rows: 32vw;
+    grid-column-gap: 2vw;
+    grid-row-gap: 2vw;
+    padding-bottom: 7vh;
+  }
+}

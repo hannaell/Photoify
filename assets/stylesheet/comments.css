@@ -1,13 +1,27 @@
 /* CSS for edit comments */
 
 @media screen and (max-width: 600px) {
+  .likesComments {
+    display: flex;
+  }
+  .postComments {
+    padding-top: 9vh;
+    padding-bottom: 7vh;
+  }
+
+  .commenstDiv {
+    width: 100vw;
+    margin-top: 1vw;
+    border-top: 1px solid lightgrey;
+  }
+
   .comments {
     display: flex;
   }
 
   .commentUserFeed {
     font-weight: bold;
-    color: deepskyblue;
+
     margin-right: 1vw;
   }
 
@@ -16,7 +30,6 @@
 
   .addComment {
     display: flex;
-
     justify-content: center;
     align-items: center;
   }
@@ -38,6 +51,20 @@
     font-size: 15px;
   }
 
-  .formCommentFeed {
+  .inputComments {
+    width: 370px;
+    height: ;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .formComment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
