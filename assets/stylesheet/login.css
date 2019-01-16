@@ -9,6 +9,19 @@
     align-items: center;
   }
 
+  .h2Login {
+    margin-bottom: 5vh;
+  }
+  .containerLogin {
+    width: 80vw;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .emailLogin {
     display: flex;
     flex-direction: column;
@@ -30,6 +43,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 1vh;
   }
 
   .inputLogin {
@@ -39,5 +53,13 @@
     box-sizing: border-box;
     border: lightgray solid 1px;
     font-size: 15px;
+  }
+
+  .createLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5vh;
   }
 }
