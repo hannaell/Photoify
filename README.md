@@ -7,7 +7,7 @@ Making a Instagram clone
 ## Testers
 
 - [Samuel Johansson](https://github.com/WebSamuel90) - Mac
-- [Laureta Dzika](https://github.com/xhika/photoify) - Mac
+- [Laureta Dzika](https://github.com/xhika) - Mac
 
 ### Prerequisites
 
