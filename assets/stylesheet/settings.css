@@ -169,3 +169,179 @@
     margin: 1vh;
   }
 }
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: 25%;
+    padding-top: 9vh;
+    padding-bottom: 7vh;
+  }
+
+  .labelSettings {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+  }
+
+  .profileSettings {
+    width: 350px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profilePictureSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1vh;
+  }
+
+  .updateName {
+    width: 350px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .firstNameSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .lastNameSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .usernameSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .bioSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .updateEmail {
+    width: 350px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .emailSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .confirmPasswordSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .updatePassword {
+    width: 350px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .changePasswordSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .deleteAccount {
+    width: 350px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .deleteSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .inputSettings {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .smallSettings {
+    margin: 1vh;
+  }
+
+  .buttonSettings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3vh;
+  }
+
+  .pictureSettings {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin: 1vh;
+  }
+}

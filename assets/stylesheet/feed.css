@@ -1,14 +1,15 @@
 /* CSS for news feed */
 @media screen and (max-width: 600px) {
+  .postsFeed {
+    padding-top: 9vh;
+    padding-bottom: 7vh;
+  }
+
   .card {
     width: 100vw;
     border-top: 1px solid lightgrey;
   }
 
-  .postsFeed {
-    padding-top: 9vh;
-    padding-bottom: 7vh;
-  }
   .container {
     margin-left: 1vw;
   }
@@ -74,6 +75,7 @@
   }
 
   .hart {
+    outline: 0;
     margin: 0;
     background-color: none;
     height: 5vh;
@@ -114,6 +116,139 @@
     width: 30vw;
     margin-top: 1vh;
     border-radius: 5%;
+    font-size: 16px;
+  }
+
+  .uploadedTime {
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+  }
+
+  .uploadedFeed {
+  }
+}
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .postsFeed {
+    width: 50%;
+    margin-left: 25%;
+    padding-top: 9vh;
+    padding-bottom: 7vh;
+  }
+
+  .post {
+  }
+
+  .card {
+    width: 100%;
+    border-top: 1px solid lightgrey;
+  }
+  .account {
+    display: flex;
+    align-items: center;
+  }
+
+  .profilePictureFeed {
+    width: 7vh;
+    height: 7vh;
+    border-radius: 50%;
+    margin: 1vw;
+  }
+
+  .userFeed {
+    font-weight: bold;
+  }
+
+  .settingsIcon {
+    font-size: 20px;
+    color: black;
+  }
+
+  .uploadedPicture {
+  }
+
+  .photoFeed {
+    width: 100%;
+    height: auto;
+  }
+
+  .container {
+    margin-left: 1vw;
+  }
+
+  .likeButton {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .commentIcon {
+    font-size: 30px;
+    color: lightgray;
+    margin-right: 3vw;
+  }
+
+  .likeFormFeed {
+  }
+
+  .numberOfLikes {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .numberLikes {
+    display: flex;
+  }
+
+  .numberComments {
+    display: flex;
+    margin-right: 1vw;
+  }
+
+  .hart {
+    outline: 0;
+    margin: 0;
+    background-color: none;
+    height: 5vh;
+    width: 10vw;
+    border: none;
+    border-radius: 5%;
+    font-size: 16px;
+  }
+
+  .redHart {
+    color: red;
+    font-size: 30px;
+  }
+
+  .hartIconFeed {
+    font-size: 30px;
+    color: lightgray;
+  }
+
+  .likeCounterFeed {
+  }
+
+  .likesFeed {
+    margin-left: 1vw;
+  }
+
+  .description {
+    display: flex;
+  }
+
+  .descriptionFeed {
+    margin-left: 1vh;
+  }
+
+  .button {
+    background-color: lightgray;
+    height: 5vh;
+    width: 150px;
+    margin-top: 1vh;
+    border-radius: 5px;
     font-size: 16px;
   }
 

@@ -29,24 +29,27 @@ $statement = $pdo->prepare(
 
 
 <?php if (isset($_SESSION['logedin'])): ?>
+    <div class="profile">
 
-    <div class="userProfile">
-        <h2 class="usernameProfile"><?php echo $_SESSION['logedin']['username']; ?></h2>
-        <img class="profilepictureProfile" src="/app/images/<?php echo $_SESSION['logedin']['profile_picture']; ?>" alt="BILD">
-        <h4 class="bioProfile"><?php echo $_SESSION['logedin']['biography']; ?></h4>
-    </div>
-
-    <div class="feeedProfile">
-        <?php foreach ($posts as $post): ?>
-            <?php
-                $postId = $post['post_id'];
-            ?>
-        <div class="photoDiv">
-            <a href="/comments.php?post_id=<?= $postId?>">
-                <img class="photoProfile" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
-            </a>
+        <div class="userProfile">
+            <img class="profilepictureProfile" src="/app/images/<?php echo $_SESSION['logedin']['profile_picture']; ?>" alt="BILD">
+            <h2 class="usernameProfile"><?php echo $_SESSION['logedin']['username']; ?></h2>
+            <h4 class="bioProfile"><?php echo $_SESSION['logedin']['biography']; ?></h4>
         </div>
-        <?php endforeach; ?>
+
+        <div class="feeedProfile">
+            <?php foreach ($posts as $post): ?>
+                <?php
+                    $postId = $post['post_id'];
+                ?>
+            <div class="photoDiv">
+                <a href="/comments.php?post_id=<?= $postId?>">
+                    <img class="photoProfile" src="/app/images/<?php echo $post['content']; ?>" alt="Image">
+                </a>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
     </div>
     <script type="text/javascript" src="assets/script/posts.js"></script>
     <script type="text/javascript" src="assets/script/upload.js"></script>

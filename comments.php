@@ -88,11 +88,9 @@ require __DIR__.'/views/header.php';
 
     ?>
 
-    <!-- Skriver ut bilder och kommentarer -->
-
-    <div class="post" data-id="<?php echo $postId; ?>">
 
         <div class="postComments">
+            <div class="post" data-id="<?php echo $postId; ?>">
 
             <div class="card">
 
@@ -153,15 +151,12 @@ require __DIR__.'/views/header.php';
                         <?php endforeach; ?>
                     </div>
 
-                    <!-- <div class="addComment"> -->
-                        <form class="addComment" action="/comments.php?post_id=<?php echo $postId?>" method="post">
-                            <div class="formComment">
-
-                                <input class="inputComments" type="text" name="comment" placeholder="Comment..." required>
-                                <button class="buttonComment" type="submit">Submit</button>
-                            </div>
-                        </form>
-                    <!-- </div> -->
+                    <form class="addComment" action="/comments.php?post_id=<?php echo $postId?>" method="post">
+                        <div class="formComment">
+                            <input class="inputComments" type="text" name="comment" placeholder="Comment..." required>
+                            <button class="buttonComment" type="submit">Submit</button>
+                        </div>
+                    </form>
 
                     <div class="uploadedTime">
                         <p class="uploadedFeed"><?php echo $ago; ?></p>

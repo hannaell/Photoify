@@ -9,6 +9,7 @@
     width: 100vw;
     height: 100vh;
     margin: 0;
+    background-color: #fafafa;
   }
 
   a:link,
@@ -30,3 +31,33 @@
 /* Desktop */
 /* ============================================== */
 /* ============================================== */
+@media screen and (min-width: 1000px) {
+  * {
+    margin: 0;
+    font-family: "Roboto", serif;
+    background-color: #fafafa;
+  }
+
+  body {
+    width: 100vw;
+    /* height: 100vh; */
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+
+  a:link,
+  a:visited {
+    color: black;
+    decoration: none;
+    text-decoration: none;
+  }
+
+  .previous {
+    font-size: 40px;
+    margin-left: 3vw;
+  }
+
+  h1 {
+    font-family: "Pacifico", cursive;
+  }
+}

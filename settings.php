@@ -37,7 +37,7 @@
 
             <div class="bioSettings">
                 <label class="labelSettings" for="biography">Update bio</label>
-                <input class="inputSettings" type="text" name="biography" value="<?=$_SESSION['logedin']['biography']?>" required>
+                <input class="inputSettings" type="text" name="biography" value="<?=$_SESSION['logedin']['biography']?>">
                 <small class="smallSettings">Write something about yourself.</small>
             </div>
 

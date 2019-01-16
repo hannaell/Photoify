@@ -9,10 +9,6 @@
     padding-bottom: 7vh;
   }
 
-  .h1uploadPhoto {
-    margin-top: 3vh;
-  }
-
   .filePosts {
     display: flex;
     flex-direction: column;
@@ -21,15 +17,19 @@
     margin-top: 1vh;
   }
 
+  .uploadImg {
+    width: 100vw;
+    height: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .uploadPhoto {
     width: 100vw;
     height: 100vw;
   }
 
   .inputUpload {
-    /* border: lightgray solid 1px;
-    width: 96vw;
-    margin-top: 1vh; */
     display: none;
   }
 
@@ -39,6 +39,99 @@
     width: 30vw;
     margin-top: 1vh;
     border-radius: 5%;
+    font-size: 16px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .descriptionPosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+  }
+
+  .inputPosts {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .buttonUploadpost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .uploadPosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 9vh;
+    padding-bottom: 7vh;
+    width: 50%;
+    height: 95vh;
+    margin-left: 25%;
+  }
+
+  .formUpload {
+    width: 100%;
+    height: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .uploadImg {
+    width: 500px;
+    height: 500px;
+    margin-bottom: 20px;
+  }
+
+  .filePosts {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .uploadPhoto {
+    width: 500px;
+    height: 500px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inputUpload {
+    display: none;
+  }
+
+  .fileUpload {
+    background-color: lightgray;
+    height: 5vh;
+    width: 150px;
+    margin-top: 1vh;
+    border-radius: 5px;
     font-size: 16px;
     color: black;
     display: flex;

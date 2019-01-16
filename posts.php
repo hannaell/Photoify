@@ -9,10 +9,12 @@ require __DIR__.'/views/header.php'; ?>
         <div class="uploadPosts">
 
 
-            <form action="app/posts/posts-posts.php" method="post" enctype="multipart/form-data">
+            <form class="formUpload"action="app/posts/posts-posts.php" method="post" enctype="multipart/form-data">
 
                 <div class="filePosts">
-                    <img class="uploadPhoto" src="app/images/camera.png" alt="BILD">
+                    <div class="uploadImg">
+                        <img class="uploadPhoto" src="app/images/camera.png" alt="BILD">
+                    </div>
                     <input class="inputUpload" id="fileUpload" type="file" name="img" required>
                     <label class="fileUpload" for="fileUpload">Choose a file</label>
                 </div><!-- /form-group -->

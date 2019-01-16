@@ -74,14 +74,13 @@ $statement = $pdo->prepare(
 
             ?>
 
-            <!-- Skriver ut bilder och kommentarer -->
             <div class="post" data-id="<?php echo $postId; ?>">
 
                 <div class="card">
 
                     <div class="account">
                         <img class="profilePictureFeed" src="/app/images/<?php echo $post['profile_picture']; ?>" alt="Profile Picture">
-                        <a class="" href="/profileuser.php?user_id=<?= $post['user_id']?>">
+                        <a href="/profileuser.php?user_id=<?= $post['user_id']?>">
                         <p class="userFeed"><?php echo $post['username']; ?></p></a>
                         <?php if ($post['user_id'] === $_SESSION['logedin']['id']): ?>
                                 <div class="dropdown">
@@ -149,8 +148,12 @@ $statement = $pdo->prepare(
 
                             <?php foreach ($countComments as $countComment): ?>
                                 <div class="numberComments">
-                                    <p class="likeCounterFeed"><?php echo $countComment['comments']; ?></p>
-                                    <p class="likesFeed">Comments</p>
+                                    <a class="" href="/comments.php?post_id=<?= $postId?>">
+                                        <p class="likeCounterFeed"><?php echo $countComment['comments']; ?></p>
+                                    </a>
+                                    <a class="" href="/comments.php?post_id=<?= $postId?>">
+                                        <p class="likesFeed">Comments</p>
+                                    </a>
                                 </div>
                             <?php endforeach; ?>
                         </div>

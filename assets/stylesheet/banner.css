@@ -76,3 +76,86 @@
     width: 100%;
   }
 }
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .banner {
+    width: 100vw;
+    height: 9vh;
+    background-color: #fafafa;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+  }
+
+  .previous {
+    outline: 0;
+    font-size: 40px;
+    margin-left: 3vw;
+  }
+
+  .settingsBanner {
+    outline: 0;
+    font-size: 20px;
+    color: black;
+    float: left;
+  }
+
+  .signOut {
+    float: left;
+  }
+
+  .dropdownBanner {
+    float: right;
+    overflow: hidden;
+    right: 0;
+    width: 2vw;
+    margin-right: 3vw;
+  }
+
+  .dropdownBanner .dropButton {
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: lightgray;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    width: 25px;
+  }
+
+  .dropdown-content {
+    display: none;
+    flex-flow: column;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right: 0;
+  }
+
+  .dropdown-content a {
+    float: right;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .show {
+    display: flex;
+  }
+
+  .h1banner {
+    width: 100%;
+  }
+}

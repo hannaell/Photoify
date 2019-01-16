@@ -64,3 +64,73 @@
     margin: 5vh;
   }
 }
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .login {
+    width: 50%;
+    height: 100vh;
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .h2Login {
+    margin-bottom: 5vh;
+  }
+
+  .containerLogin {
+    width: 350px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .emailLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .passwordLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1vh;
+  }
+
+  .buttonLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2vh;
+  }
+
+  .inputLogin {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .createLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5vh;
+  }
+}

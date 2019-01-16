@@ -17,3 +17,25 @@
     padding: 0 5vw;
   }
 }
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .navbar {
+    height: 7vh;
+    width: 100vw;
+    background-color: #fafafa;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .navbarIcon {
+    color: black;
+    font-size: 30px;
+    padding: 0 5vw;
+  }
+}

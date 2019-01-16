@@ -4,6 +4,7 @@
   .likesComments {
     display: flex;
   }
+
   .postComments {
     padding-top: 9vh;
     padding-bottom: 7vh;
@@ -11,6 +12,81 @@
 
   .commenstDiv {
     width: 100vw;
+    margin-top: 1vw;
+    border-top: 1px solid lightgrey;
+  }
+
+  .comments {
+    display: flex;
+  }
+
+  .commentUserFeed {
+    font-weight: bold;
+
+    margin-right: 1vw;
+  }
+
+  .commentFeed {
+  }
+
+  .addComment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .buttonComment {
+    background-color: lightgray;
+    height: 6vh;
+    width: 30vw;
+    border-radius: 5%;
+    font-size: 16px;
+  }
+
+  .inputFeed {
+    width: 200px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .inputComments {
+    width: 370px;
+    height: ;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: lightgray solid 1px;
+    font-size: 15px;
+  }
+
+  .formComment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .likesComments {
+    display: flex;
+  }
+
+  .postComments {
+    width: 50%;
+    margin-left: 25%;
+    padding-top: 9vh;
+    padding-bottom: 7vh;
+  }
+
+  .commenstDiv {
+    width: 98%;
     margin-top: 1vw;
     border-top: 1px solid lightgrey;
   }

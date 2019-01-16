@@ -1,5 +1,7 @@
 /* CSS for profile page */
 @media screen and (max-width: 600px) {
+  .profile {
+  }
   .profilepictureProfile {
     width: 18vh;
     height: 18vh;
@@ -41,5 +43,57 @@
     grid-column-gap: 2vw;
     grid-row-gap: 2vw;
     padding-bottom: 7vh;
+  }
+}
+
+/* Desktop */
+/* ============================================== */
+/* ============================================== */
+@media screen and (min-width: 1000px) {
+  .profile {
+    width: 50%;
+    margin-left: 25%;
+  }
+  .profilepictureProfile {
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+  }
+
+  .userProfile {
+    width: 50%;
+    height: 35vh;
+    margin: 5vw;
+    /* padding-top: 9vh; */
+  }
+
+  .photoDiv {
+    width: 221px;
+    height: 222px;
+    overflow: hidden;
+    position: relative;
+  }
+  .photoProfile {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .landscape {
+    height: 100%;
+    width: auto;
+  }
+
+  .feeedProfile {
+    padding-bottom: 7vh;
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-template-rows: 222px;
+    grid-column-gap: 2%;
+    grid-row-gap: 1%;
   }
 }
