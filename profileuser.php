@@ -13,8 +13,7 @@ $statement = $pdo->prepare(
     FROM posts p INNER JOIN users u WHERE u.id = p.user_id AND u.id = :user_id"
     );
 
-    if (!$statement)
-    {
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
 

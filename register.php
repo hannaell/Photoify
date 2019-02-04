@@ -22,7 +22,7 @@
 
             <div class="emailRegister">
                 <label for="email">Email</label>
-                <input class="inputRegister" type="email" name="email" placeholder="francis@darjeeling.com" required>
+                <input class="inputRegister" type="email" name="email" placeholder="mail@mail.com" required>
             </div>
 
             <div class="passwordRegister">

@@ -26,7 +26,7 @@ require __DIR__.'/views/header.php';
         'SELECT content, description, created_at, updated_at, user_id
         FROM posts WHERE id = :id'
     );
-    if(!$statement){
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
     $statement->bindParam(':id', $postId, PDO::PARAM_STR);
@@ -41,8 +41,7 @@ require __DIR__.'/views/header.php';
             'INSERT INTO comments (content, created_at, user_id, post_id)
             VALUES (:content, :created_at, :id, :post_id)'
         );
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
         $statement->bindParam(':created_at', $created_at, PDO::PARAM_STR);
@@ -60,8 +59,7 @@ require __DIR__.'/views/header.php';
         'SELECT c.id as comment_id, c.content, c.created_at, u.username, u.profile_picture, u.id as user_id
         FROM comments c INNER JOIN users u WHERE u.id = c.user_id AND c.post_id = :post_id'
     );
-    if (!$statement)
-    {
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
     $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
@@ -110,7 +108,7 @@ require __DIR__.'/views/header.php';
                         <form method="post" class="likeFormFeed" >
                             <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
                             <button class="hart" type="submit">
-                                <?php if($liked): ?>
+                                <?php if ($liked): ?>
                                     <span class="redHart">
                                         <i class="fas fa-heart" aria-hidden="true"></i>
                                     </span>

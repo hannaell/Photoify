@@ -18,7 +18,7 @@ require __DIR__.'/../autoload.php';
  */
 
 // If the form has been sent
-if(!isset($_SESSION['logedin'], $_POST['post_id'])){
+if (!isset($_SESSION['logedin'], $_POST['post_id'])) {
     die();
 }
 
@@ -40,11 +40,11 @@ $result = $statement->fetch(PDO::FETCH_ASSOC);
 $data['debug'] = $result;
 
 // if no row was found
-if(!$result){
+if (!$result) {
     // insert like row
     $statement = $pdo->prepare('INSERT INTO likes (user_id, post_id) VALUES (:user_id, :post_id);');
     $data['action'] = 'liked';
-}else{
+} else {
     // delete like row
     $statement = $pdo->query('DELETE FROM likes WHERE post_id = :post_id AND user_id = :user_id;');
     $data['action'] = 'disliked';

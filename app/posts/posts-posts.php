@@ -9,9 +9,8 @@ require __DIR__.'/../autoload.php';
 if (isset($_SESSION['logedin'], $_FILES['img'])) {
     $postPicture = $_FILES['img'];
 
-    if($postPicture['type'] === 'image/jpeg' || $postPicture['type'] === 'image/jpg' || $postPicture['type'] === 'image/png') {
+    if ($postPicture['type'] === 'image/jpeg' || $postPicture['type'] === 'image/jpg' || $postPicture['type'] === 'image/png') {
         if ($postPicture['size'] < 3000000) {
-
             $created_at = date("y-m-d, H:i:s");
             $id = (int)$_SESSION['logedin']['id'];
             $imgName = $id.'_'.$created_at.$postPicture['name'];
@@ -24,8 +23,7 @@ if (isset($_SESSION['logedin'], $_FILES['img'])) {
             VALUES (:content, :description, :created_at, :id)');
 
 
-            if (!$statement)
-            {
+            if (!$statement) {
                 die(var_dump($pdo->errorInfo()));
             }
 

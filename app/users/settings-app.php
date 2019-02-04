@@ -9,7 +9,7 @@ require __DIR__.'/../autoload.php';
 if (isset($_SESSION['logedin'], $_FILES['img'])) {
     $profilePicture = $_FILES['img'];
 
-    if($profilePicture['type'] === 'image/jpeg' || $profilePicture['type'] === 'image/jpg' || $profilePicture['type'] === 'image/png') {
+    if ($profilePicture['type'] === 'image/jpeg' || $profilePicture['type'] === 'image/jpg' || $profilePicture['type'] === 'image/png') {
         if ($profilePicture['size'] < 3000000) {
             $updated_at = date("y-m-d, H:i:s");
             $id = (int)$_SESSION['logedin']['id'];
@@ -19,8 +19,7 @@ if (isset($_SESSION['logedin'], $_FILES['img'])) {
 
             $statement = $pdo->prepare('UPDATE users SET profile_picture = :profile_picture, updated_at = :updated_at WHERE id = :id');
 
-            if (!$statement)
-            {
+            if (!$statement) {
                 die(var_dump($pdo->errorInfo()));
             }
 
@@ -42,16 +41,13 @@ if (isset($_SESSION['logedin'], $_FILES['img'])) {
             move_uploaded_file($getImg, $uploadImg);
 
             $_SESSION['logedin']['profile_picture'] = $imgName;
-
-            }
+        }
     }
-
 }
 
 
 // Code for updating first name, last name, username and bio
 if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POST['username'], $_POST['biography'])) {
-
     $first_name = trim(filter_var($_POST['first_name'], FILTER_SANITIZE_STRING));
     $last_name = trim(filter_var($_POST['last_name'], FILTER_SANITIZE_STRING));
     $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
@@ -66,8 +62,7 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
     $statement = $pdo->prepare('UPDATE users SET first_name = :first_name, last_name = :last_name,
     username = :username, biography = :biography, updated_at = :updated_at WHERE id = :id');
 
-    if (!$statement)
-    {
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
 
@@ -86,7 +81,6 @@ if (isset($_SESSION['logedin'], $_POST['first_name'], $_POST['last_name'], $_POS
 
 // Code for updating email
 if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'])) {
-
     $id = (int)$_SESSION['logedin']['id'];
     $user = getUserByID($id, $pdo);
     $email = trim(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL));
@@ -94,8 +88,7 @@ if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'])) {
     if (password_verify($_POST['password'], $user['password'])) {
         $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -107,16 +100,14 @@ if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'])) {
 
         if ($checkForEmail) {
             echo "Email alredy exicts";
-        }
-        else {
+        } else {
             // die(var_dump('blah'));
             $updated_at = date("y-m-d, H:i:s");
             $id = (int)$_SESSION['logedin']['id'];
 
             $statement = $pdo->prepare('UPDATE users SET email = :email WHERE id = :id');
 
-            if (!$statement)
-            {
+            if (!$statement) {
                 die(var_dump($pdo->errorInfo()));
             }
 
@@ -132,21 +123,17 @@ if (isset($_SESSION['logedin'], $_POST['email'], $_POST['password'])) {
 
 // Code for updating password
 if (isset($_SESSION['logedin'], $_POST['password'], $_POST['new_password'], $_POST['confirm_password'])) {
-
     if ($_POST['new_password'] === $_POST['confirm_password']) {
-
         $id = (int)$_SESSION['logedin']['id'];
         $user = getUserByID($id, $pdo);
         $updated_at = date("y-m-d, H:i:s");
         $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
 
         if (password_verify($_POST['password'], $user['password'])) {
-
             $statement = $pdo->prepare('UPDATE users SET password = :password, updated_at = :updated_at WHERE id = :id');
 
 
-            if (!$statement)
-            {
+            if (!$statement) {
                 die(var_dump($pdo->errorInfo()));
             }
 
@@ -157,7 +144,6 @@ if (isset($_SESSION['logedin'], $_POST['password'], $_POST['new_password'], $_PO
             $statement->execute();
 
             $_SESSION['logedin']['password'] = $new_password;
-
         }
     }
 }
@@ -178,8 +164,7 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
         // Delete post images
         $statement = $pdo->prepare('SELECT content FROM posts WHERE user_id = :user_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -197,8 +182,7 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
         // Delete account
         $statement = $pdo->prepare('DELETE FROM users WHERE id = :user_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -208,8 +192,7 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
         // Delete posts
         $statement = $pdo->prepare('DELETE FROM posts WHERE user_id = :user_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -219,8 +202,7 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
         // Delete comments
         $statement = $pdo->prepare('DELETE FROM comments WHERE user_id = :user_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -230,8 +212,7 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
         // Delete likes
         $statement = $pdo->prepare('DELETE FROM likes WHERE user_id = :user_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -241,16 +222,12 @@ if (isset($_SESSION['logedin'], $_POST['password'])) {
         // Delete follower
         $statement = $pdo->prepare('DELETE FROM followers WHERE user_id = :user_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
         $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
         $statement->execute();
-
-
-
     }
     session_destroy();
     redirect('/login.php');

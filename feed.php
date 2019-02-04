@@ -11,8 +11,7 @@ $statement = $pdo->prepare(
     FROM posts p INNER JOIN users u WHERE u.id = p.user_id"
     );
 
-    if (!$statement)
-    {
+    if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
 
@@ -38,8 +37,7 @@ $statement = $pdo->prepare(
                 FROM comments c INNER JOIN users u WHERE u.id = c.user_id AND c.post_id = :post_id"
             );
 
-            if (!$statement)
-            {
+            if (!$statement) {
                 die(var_dump($pdo->errorInfo()));
             }
 
@@ -119,7 +117,7 @@ $statement = $pdo->prepare(
                             <form method="post" class="likeFormFeed" >
                                 <input type="hidden" name="post_id" value="<?php echo $postId; ?>" />
                                 <button class="hart" type="submit">
-                                    <?php if($liked): ?>
+                                    <?php if ($liked): ?>
                                         <span class="redHart">
                                             <i class="fas fa-heart" aria-hidden="true"></i>
                                         </span>

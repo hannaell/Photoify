@@ -32,8 +32,7 @@ require __DIR__.'/../app/autoload.php';
     if (isset($_SESSION['logedin'])) {
         require __DIR__.'/navbar.php';
         require __DIR__.'/banner.php';
-    }
-    else {
+    } else {
         require __DIR__.'/banner.php';
     }
     ?>

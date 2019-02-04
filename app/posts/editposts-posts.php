@@ -10,8 +10,7 @@ if (isset($_SESSION['logedin']['id'])) {
 
         $statement = $pdo->prepare('SELECT * FROM posts WHERE id = :post_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -29,13 +28,12 @@ if (isset($_SESSION['logedin']['id'])) {
 
         $statement = $pdo->prepare('UPDATE posts SET description = :description, updated_at = :updated_at WHERE id = :post_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
         $statement->bindParam(':post_id', $postId, PDO::PARAM_INT);
-        $statement->bindParam(':description', $description,  PDO::PARAM_STR);
+        $statement->bindParam(':description', $description, PDO::PARAM_STR);
         $statement->bindParam(':updated_at', $updated_at, PDO::PARAM_STR);
         $statement->execute();
 
@@ -49,8 +47,7 @@ if (isset($_SESSION['logedin']['id'])) {
         // Delete img
         $statement = $pdo->prepare('SELECT content FROM posts WHERE id = :post_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -67,8 +64,7 @@ if (isset($_SESSION['logedin']['id'])) {
         // Delete post
         $statement = $pdo->prepare('DELETE FROM posts WHERE id = :post_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -78,8 +74,7 @@ if (isset($_SESSION['logedin']['id'])) {
         // Delete comments
         $statement = $pdo->prepare('DELETE FROM comments WHERE post_id = :post_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
@@ -89,8 +84,7 @@ if (isset($_SESSION['logedin']['id'])) {
         // Delete likes
         $statement = $pdo->prepare('DELETE FROM likes WHERE post_id = :post_id');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 

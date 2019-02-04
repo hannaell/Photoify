@@ -39,9 +39,7 @@ if (isset($_POST['email'], $_POST['password'])) {
         ];
 
         redirect('/feed.php');
-    }
-
-    else {
+    } else {
         redirect('/login.php');
     }
 }

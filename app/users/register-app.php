@@ -19,8 +19,7 @@ if (isset($_POST['first_name'], $_POST['last_name'],$_POST['email'], $_POST['use
         $statement = $pdo->prepare('INSERT INTO users(first_name, last_name, username, email, password, created_at, profile_picture)
         VALUES (:first_name, :last_name, :username, :email, :password, :created_at, :profile_picture)');
 
-        if (!$statement)
-        {
+        if (!$statement) {
             die(var_dump($pdo->errorInfo()));
         }
 
