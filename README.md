@@ -31,4 +31,4 @@ Making a Instagram clone
 
 -MIT
 
-<img src=“https://github.styleci.io/repos/161142859/shield“>
+<img src="https://github.styleci.io/repos/161142859/shield">
